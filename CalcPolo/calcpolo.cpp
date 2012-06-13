@@ -1,3 +1,4 @@
+#include <QMessageBox>
 #include "calcpolo.h"
 #include "ui_calcpolo.h"
 #include "Calculatrice.h"
@@ -5,6 +6,7 @@
 #include <sstream>
 #include "Function.h"
 #include "string"
+
 
 CalcPolo::CalcPolo(QWidget *parent) :
     QMainWindow(parent),
@@ -16,7 +18,7 @@ CalcPolo::CalcPolo(QWidget *parent) :
     QObject::connect(ui->show_hide, SIGNAL(clicked()),this, SLOT(hide_show_offon()));
     QObject::connect(ui->lineEdit, SIGNAL(returnPressed()), this, SLOT(empiler_reel()));
     QObject::connect(ui->pushButton_Load, SIGNAL(clicked()),ui->listWidget, SLOT(affiche_pile()));   //ne fonctionne pas, le SLOT on_pushButton_Load_clicked() plus bas suffit.
-    QObject::connect(ui->pushButton_0, SIGNAL(clicked()), ui->lineEdit, SLOT(line_0()));               //celui là non-plus. Pas de connect du coup, uniquement des SLOT
+  //  QObject::connect(ui->pushButton_0, SIGNAL(clicked()), ui->lineEdit, SLOT(line_0()));               //celui là non-plus. Pas de connect du coup, uniquement des SLOT
 }
 
 CalcPolo::~CalcPolo()
@@ -51,7 +53,7 @@ void CalcPolo::empiler_reel()
       if (!atof(cstr))                  //si atof(cstr) renvoie 0 -> alors ça veut dire que soit  1)la chaine est '000[...]000.0000[..]00'    avec [1..n].[0..k] le nombre de 0
       {                                                                                         //2)on n'a pas un double dans la chaine
           bool point=false; //booléen qui indique vrai si il a déja rencontré un point
-          b=true;           //boolée qui indique s'il doit être considéré comme un double
+          b=true;           //booléen qui indique s'il doit être considéré comme un double
           if (cstr[0]!='0') //si le premier ou le dernier élément n'est pas '0' -> impossible
           {
               b=false;
@@ -100,6 +102,7 @@ void CalcPolo::empiler_reel()
           Pile.push(R);
 
       }
+
       ui->lineEdit->clear();
 
 
@@ -125,7 +128,7 @@ void CalcPolo::affiche_pile()
     {
 
         Reel r = Pile2.top();
-        double f=r.getvaleur();
+        double f=r.getValeur();
 
                                              //  créer un flux de sortie
           std::ostringstream oss;
@@ -141,6 +144,12 @@ void CalcPolo::affiche_pile()
     }
 }
 
+
+//Opérateurs binaires
+
+
+
+
 void CalcPolo::empile_plus()
 {
     if (Pile.size()<2){}                    //si on a moins de deux éléments dans la pile, on fait rien.
@@ -153,6 +162,81 @@ void CalcPolo::empile_plus()
         Pile.push(r1+r2);
     }
 }
+
+void CalcPolo::empile_moins()
+{
+    if (Pile.size()<2){}                    //si on a moins de deux éléments dans la pile, on fait rien.
+    else
+    {
+        Reel r1 = Pile.top();
+        Pile.pop();
+        Reel r2 = Pile.top();
+        Pile.pop();
+        Pile.push(r2-r1);
+    }
+}
+
+void CalcPolo::empile_fois()
+{
+    if (Pile.size()<2){}                    //si on a moins de deux éléments dans la pile, on fait rien.
+    else
+    {
+        Reel r1 = Pile.top();
+        Pile.pop();
+        Reel r2 = Pile.top();
+        Pile.pop();
+        Pile.push(r2*r1);
+    }
+}
+
+
+void CalcPolo::empile_div()
+{
+    if (Pile.size()<2){}                    //si on a moins de deux éléments dans la pile, on fait rien.
+    else
+    {
+        Reel r1 = Pile.top();
+        if (r1.getValeur()==0)
+        {
+
+        }
+        else
+        {
+            Pile.pop();
+            Reel r2 = Pile.top();
+            Pile.pop();
+            Pile.push(r2/r1);
+        }
+    }
+}
+
+
+void CalcPolo::empile_sin()
+{
+    Reel r1(Pile.top());
+    r1=*r1.sin();
+    Pile.pop();
+    Pile.push(r1);
+
+
+}
+
+
+
+
+//CLEAR PILE
+
+void CalcPolo::clear_pile()
+{
+    while ( ! Pile.empty() )
+    {
+        Pile.pop();
+    }
+
+}
+
+
+
 
 
 
@@ -219,12 +303,54 @@ void CalcPolo::on_pushButton_9_clicked()
     ui->lineEdit->insert("9");
 }
 
+
+void CalcPolo::on_pushButton_cless_clicked()
+{
+    ui->lineEdit->insert("-");
+}
+
+
+
+//SLOT empile
+
 void CalcPolo::on_pushButton_return_clicked()
 {
     empiler_reel();
 }
 
+//SLOT opérateurs binaires
+
+
 void CalcPolo::on_pushButton_plus_clicked()
 {
     empile_plus();
+}
+
+void CalcPolo::on_pushButton_less_clicked()
+{
+    empile_moins();
+}
+
+void CalcPolo::on_pushButton_multi_clicked()
+{
+    empile_fois();
+}
+
+void CalcPolo::on_pushButton_div_clicked()
+{
+    empile_div();
+}
+
+//SLOT CLEAR
+
+void CalcPolo::on_pushButton_clear_clicked()
+{
+    clear_pile();
+}
+
+//OPERATEURS UNAIRES
+
+void CalcPolo::on_pushButton_sin_clicked()
+{
+    empile_sin();
 }

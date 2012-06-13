@@ -5,6 +5,8 @@
 #include <stack>
 #include "NombreReel.h"
 #include <QString>
+#include <QMessageBox>
+
 
 namespace Ui {
 class CalcPolo;
@@ -17,10 +19,12 @@ class CalcPolo : public QMainWindow
 public:
     explicit CalcPolo(QWidget *parent = 0);
     ~CalcPolo();
+
+
     
 private:
     Ui::CalcPolo *ui;
-    std::stack<Reel> Pile;
+    std::stack<Reel> Pile;  //Pour l'instant pile de reel, mais il faudra changer (ou pas)
 
 
 
@@ -31,6 +35,12 @@ private slots:
 
     void affiche_pile();
     void empile_plus();
+    void empile_moins();
+    void empile_fois();
+    void empile_div();
+    void empile_sin();
+    void clear_pile();
+
 
 
     //SLOTS sans connect
@@ -48,6 +58,15 @@ private slots:
     void on_pushButton_9_clicked();
     void on_pushButton_return_clicked();
     void on_pushButton_plus_clicked();
+    void on_pushButton_less_clicked();
+    void on_pushButton_multi_clicked();
+    void on_pushButton_cless_clicked();
+    void on_pushButton_div_clicked();
+    void on_pushButton_clear_clicked();
+
+
+
+    void on_pushButton_sin_clicked();
 };
 
 #endif // CALCPOLO_H

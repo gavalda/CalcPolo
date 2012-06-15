@@ -13,35 +13,22 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     pile.cpp \
+    type.cpp \
     entier.cpp \
     reel.cpp \
     collection_pile.cpp \
     rationnel.cpp \
     complexe.cpp \
-    expression.cpp \
-    type_factory.cpp \
-    dom.cpp \
-    gardien.cpp
+    reglages.cpp
 
 HEADERS  += mainwindow.h \
     pile.h \
-    Donnee.h \
+    type.h \
     entier.h \
     reel.h \
     collection_pile.h \
     rationnel.h \
     complexe.h \
-    Constante.h \
-    D.h \
-    expression.h \
-    type_factory.h \
-    dom.h \
-    gardien.h \
-    D.h \
-    Constante.h \
-    D.h \
-    Donnee.h
+    reglages.h
 
 FORMS    += mainwindow.ui
-
-QT += xml

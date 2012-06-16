@@ -28,7 +28,7 @@ void type_factory::releaseInstance()
 
 Donnee* type_factory::getType(QString s)
 {
-        if(/*Ui::MainWindow::complexe_radioButton->isChecked() &&*/ Donnee::isComplexe(s))  //Ici il faut rajouter un test un peu comme celui là, mais comment ?
+        if(!Collection_pile::getInstance().at(Collection_pile::getInstance().getActif())->getComplexe() && Donnee::isComplexe(s))  //meee Ici il faut rajouter un test un peu comme celui là, mais comment ?
         {
         return new complexe(s);
         }

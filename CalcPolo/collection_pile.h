@@ -15,11 +15,15 @@ class Collection_pile :public std::vector<Pile *>
     ~Collection_pile(){}
     Collection_pile():actif(0){}
     Collection_pile operator =(const Collection_pile);
+
 public:
     static Collection_pile& getInstance();
     static void releaseInstance();
     void addPile (Pile * _pile);
     void setActif (int a){actif=a;}
     int getActif (){return actif;}
+
+
+
 };
 #endif // COLLECTION_PILE_H

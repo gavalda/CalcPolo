@@ -29,12 +29,14 @@ public:
     static void libereInstance();
 
     //booléens de type
-
+   // static bool d;
 
 
 private:
-    Ui::MainWindow *ui;
+
     static MainWindow * instanceUnique;
+    Ui::MainWindow *ui;
+
 
 
 protected :
@@ -148,6 +150,11 @@ private slots:
 
 
 
+
+
+
+
+    void on_complexe_radioButton_clicked();
 };
 #endif // MAINWINDOW_H
 

@@ -59,6 +59,7 @@ MainWindow::MainWindow(Pile &pile, QWidget *parent) :
     QObject::connect(this, SIGNAL(refresh_signal()), this, SLOT(refresh_slot()));
     QObject::connect(ui->show_hide, SIGNAL(clicked()),this, SLOT(hide_show_offon()));
 
+
     Collection_pile::getInstance().addPile(&pile);
     emit refresh_signal();
     ui->degUnit->setChecked(true);
@@ -443,3 +444,13 @@ void MainWindow::on_radUnit_clicked()
 
 
 
+
+
+
+
+void MainWindow::on_complexe_radioButton_clicked()   //meeee
+{
+    if (Collection_pile::getInstance().at(Collection_pile::getInstance().getActif())->getComplexe())
+        Collection_pile::getInstance().at(Collection_pile::getInstance().getActif())->setComplexe(false);
+    else  Collection_pile::getInstance().at(Collection_pile::getInstance().getActif())->setComplexe(true);
+}

@@ -450,7 +450,22 @@ void MainWindow::on_radUnit_clicked()
 
 void MainWindow::on_complexe_radioButton_clicked()   //meeee
 {
-    if (Collection_pile::getInstance().at(Collection_pile::getInstance().getActif())->getComplexe())
-        Collection_pile::getInstance().at(Collection_pile::getInstance().getActif())->setComplexe(false);
-    else  Collection_pile::getInstance().at(Collection_pile::getInstance().getActif())->setComplexe(true);
+
+    Collection_pile::getInstance().at(Collection_pile::getInstance().getActif())->setType("complexe");
+
+}
+
+void MainWindow::on_reel_radioButton_clicked()
+{
+    Collection_pile::getInstance().at(Collection_pile::getInstance().getActif())->setType("reel");
+}
+
+void MainWindow::on_rationnel_radioButton_clicked()
+{
+    Collection_pile::getInstance().at(Collection_pile::getInstance().getActif())->setType("rationnel");
+}
+
+void MainWindow::on_entier_radioButton_clicked()
+{
+    Collection_pile::getInstance().at(Collection_pile::getInstance().getActif())->setType("entier");
 }

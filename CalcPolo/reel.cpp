@@ -12,14 +12,14 @@
 
 Donnee* reel::operator +(Donnee & t){
 
-    try{
+/*    try{
 
        entier &tmp=dynamic_cast<entier&>(t);
        reel *resultat=new reel(data+tmp.getData());
        return resultat;
     }
     catch(std::exception &e){}
-/*
+*/
     try{
 
        reel &tmp=dynamic_cast<reel&>(t);
@@ -28,7 +28,7 @@ Donnee* reel::operator +(Donnee & t){
     }
     catch(std::exception &e){}
 
-    try{
+  /*  try{
 
        rationnel &tmp=dynamic_cast<rationnel&>(t);
        Donnee* resultat;
@@ -56,17 +56,20 @@ Donnee* reel::operator +(Donnee & t){
     }
     catch(std::exception &e){}
 */
-    throw typeException("erreur entier");
+    throw typeException("erreur reel");
 
 
 }
 
 Donnee* reel::operator /(Donnee & t){
     try{
-       reel &tmp=dynamic_cast<reel&>(t);
+      /* reel &tmp=dynamic_cast<reel&>(t);
        rationnel r(data*10*getDecimales(),10*getDecimales());
        rationnel r1(tmp.getData()*10*tmp.getDecimales(),10*tmp.getDecimales());
-       return r/r1;
+       return r/r1;*/
+       reel &tmp=dynamic_cast<reel&>(t);
+       reel *resultat=new reel(data/tmp.getData());
+       return resultat;
     }
     catch(std::exception &e){}
 /*
@@ -106,7 +109,7 @@ Donnee* reel::operator /(Donnee & t){
     }
     catch(std::exception &e){}
 */
-    throw typeException("erreur entier");
+    throw typeException("erreur reel");
 }
 
 Donnee* reel::operator*(Donnee& t){
@@ -203,22 +206,22 @@ Donnee* reel::operator-(Donnee& t){
 
 
 Donnee* reel::pow(Donnee & t){
-    try{
+/*    try{
 
        entier &tmp=dynamic_cast<entier&>(t);
        reel *resultat=new reel(std::pow(data,tmp.getData()));
        return resultat;
     }
     catch(std::exception &e){}
-/*
+*/
     try{
 
        reel &tmp=dynamic_cast<reel&>(t);
        reel *resultat=new reel(std::pow(data,tmp.getData()));
        return resultat;
     }
-    catch(std::exception &e){
-*/
+    catch(std::exception &e){}
+
     throw typeException("erreur reel");
 }
 

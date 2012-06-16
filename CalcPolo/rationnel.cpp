@@ -48,7 +48,7 @@ Donnee* rationnel::operator +(Donnee & t){
 
 */
 
-    throw typeException("erreur entier");
+    throw typeException("erreur rationnel op+");
 }
 
 Donnee* rationnel::operator -(Donnee & t){
@@ -91,7 +91,7 @@ Donnee* rationnel::operator -(Donnee & t){
     catch(std::exception &e){}
 */
 
-    throw typeException("erreur rationnel");
+    throw typeException("erreur rationnel op-");
 }
 
 Donnee* rationnel::operator /(Donnee & t){
@@ -134,7 +134,7 @@ Donnee* rationnel::operator /(Donnee & t){
     catch(std::exception &e){}
 */
 
-    throw typeException("erreur rationnel");
+    throw typeException("erreur rationnel op/");
 }
 
 
@@ -179,7 +179,7 @@ Donnee* rationnel::operator*(Donnee& t)
     catch(std::exception &e){}
 
 */
-    throw typeException("erreur rationnel");
+    throw typeException("erreur rationnel op*");
 }
 
 Donnee* rationnel::pow(Donnee & t){
@@ -199,7 +199,7 @@ Donnee* rationnel::pow(Donnee & t){
     }
     catch(std::exception &e){}
 */
-    throw typeException("erreur rationnel");
+    throw typeException("erreur rationnel pow");
 }
 
 int rationnel::pgcd(int a, int b) const {

@@ -6,6 +6,7 @@
 #include <QString>
 #include "Constante.h"
 #include "type_factory.h"
+#include "reel.h"
 
 #include "D.h"
 
@@ -25,8 +26,10 @@ public:
     {
         QString copie(s);
 
-        re=dynamic_cast<Constante*>(type_factory::getInstance().getType((copie.section('$', 0,0))));
-        im=dynamic_cast<Constante*>(type_factory::getInstance().getType((copie.section('$', 1,1))));
+       // re=dynamic_cast<Constante*>(type_factory::getInstance().getType((copie.section('$', 0,0))));
+       // im=dynamic_cast<Constante*>(type_factory::getInstance().getType((copie.section('$', 1,1))));
+        re=new reel(copie.section('$', 0,0));
+        im=new reel(copie.section('$', 1,1));
     }
 
     Donnee* operator +(Donnee & t);

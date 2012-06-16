@@ -17,7 +17,7 @@ class Pile : public QStack <Donnee *>
     int  nbElt;
     gardien* g;
     bool degre;
-    bool complexe;                       //meee
+    std::string type;                       //meee
 
 public:
 
@@ -64,8 +64,8 @@ public:
 
     void eval();
 
-    void setComplexe(bool d){complexe = d;}  //meee
-    bool getComplexe(){return complexe;}        //meee
+    void setType(std::string d){type = d;}  //meee
+    std::string getType(){return type;}        //meee
 
 
 };

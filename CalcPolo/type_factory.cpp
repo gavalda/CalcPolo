@@ -3,12 +3,13 @@
 #include "reel.h"
 #include "rationnel.h"
 #include "complexe.h"
-
+#include "string"
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
 #include "expression.h"
 #include "typeexception.h"
+using namespace std;
 
 type_factory* type_factory::instance=0;
 
@@ -28,25 +29,27 @@ void type_factory::releaseInstance()
 
 Donnee* type_factory::getType(QString s)
 {
-        if(!Collection_pile::getInstance().at(Collection_pile::getInstance().getActif())->getComplexe() && Donnee::isComplexe(s))  //meee Ici il faut rajouter un test un peu comme celui là, mais comment ?
+    if(Collection_pile::getInstance().at(Collection_pile::getInstance().getActif())->getType()=="complexe" && Donnee::isComplexe(s))  //meee Ici il faut rajouter un test un peu comme celui là, mais comment ?
         {
         return new complexe(s);
         }
-        if(Donnee::isEntier(s))
+        else if(Collection_pile::getInstance().at(Collection_pile::getInstance().getActif())->getType()=="entier" && Donnee::isEntier(s))
             return new entier(s);
-        if(Donnee::isReel(s))
+        else if(Collection_pile::getInstance().at(Collection_pile::getInstance().getActif())->getType()=="reel" && Donnee::isReel(s))
             return new reel(s);
-        if(rationnel::isRationnel(s))
+        else if(Collection_pile::getInstance().at(Collection_pile::getInstance().getActif())->getType()=="rationnel" && rationnel::isRationnel(s))
         {
-            try
-        {
-            Donnee* res= new rationnel(s);
-            return res;
-        }catch (std::exception &e) {
-            QMessageBox msgBox;
-             msgBox.setText(e.what());
-             msgBox.exec();
-        }
+             try
+            {
+                 Donnee* res= new rationnel(s);
+                 return res;
+            }
+            catch (std::exception &e)
+            {
+                 QMessageBox msgBox;
+                  msgBox.setText(e.what());
+                  msgBox.exec();
+            }
         }
         if(Donnee::isExpression(s))
             return new Expression(s);

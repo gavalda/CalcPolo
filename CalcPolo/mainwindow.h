@@ -155,6 +155,9 @@ private slots:
 
 
     void on_complexe_radioButton_clicked();
+    void on_reel_radioButton_clicked();
+    void on_rationnel_radioButton_clicked();
+    void on_entier_radioButton_clicked();
 };
 #endif // MAINWINDOW_H
 

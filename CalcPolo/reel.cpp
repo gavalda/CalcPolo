@@ -27,8 +27,7 @@ Donnee* Reel::operator +(Donnee & t){
        return resultat;
        }
     catch(std::exception &e){}
-
-  /*  try{
+  try{
 
        Rationnel &tmp=dynamic_cast<Rationnel&>(t);
        Donnee* resultat;
@@ -38,7 +37,7 @@ Donnee* Reel::operator +(Donnee & t){
     }
     catch(std::exception &e){}
 
-    try{
+/*   try{
 
        Expression &tmp=dynamic_cast<Expression&>(t);
        QString e;
@@ -46,22 +45,35 @@ Donnee* Reel::operator +(Donnee & t){
        return new Expression(e);
     }
     catch(std::exception &e){}
-
-    try{
+*/
+    try
+    {
        Complexe &tmp=dynamic_cast<Complexe&>(t);
-       Complexe conv(toQString());
-       Donnee * resultat;
-       resultat=conv+tmp;
-       return resultat;
+
+       Reel &retmp=dynamic_cast<Reel&>(*tmp.getRe());
+       Reel &imtmp=dynamic_cast<Reel&>(*tmp.getIm());
+
+       double re_d = getData()+retmp.getData();
+       double im_d = imtmp.getData();
+
+       Reel* re=new Reel(re_d);
+       Reel* im=new Reel(im_d);
+
+       Complexe* result= new Complexe(re,im);
+
+
+
+       return result;
     }
     catch(std::exception &e){}
-*/
+
     throw DonneeException("erreur Reel op+");
 
 
 }
 
-Donnee* Reel::operator /(Donnee & t){
+Donnee* Reel::operator /(Donnee & t)
+{
     try{
       /* Reel &tmp=dynamic_cast<Reel&>(t);
        Rationnel r(data*10*getDecimales(),10*getDecimales());
@@ -72,7 +84,7 @@ Donnee* Reel::operator /(Donnee & t){
        return resultat;
     }
     catch(std::exception &e){}
-/*
+
     try{
        Entier &tmp=dynamic_cast<Entier&>(t);
        Rationnel r(data*10*getDecimales(),10*getDecimales());
@@ -91,7 +103,7 @@ Donnee* Reel::operator /(Donnee & t){
     }
     catch(std::exception &e){}
 
-    try{
+/*    try{
 
        Expression &tmp=dynamic_cast<Expression&>(t);
        QString e;
@@ -99,28 +111,38 @@ Donnee* Reel::operator /(Donnee & t){
        return new Expression(e);
     }
     catch(std::exception &e){}
+*/
+    try
+    {
+        Complexe &tmp=dynamic_cast<Complexe&>(t);
 
-    try{
-       Complexe &tmp=dynamic_cast<Complexe&>(t);
-       Complexe conv(toQString());
-       Donnee * resultat;
-       resultat=conv/tmp;
-       return resultat;
+        Reel &im2=dynamic_cast<Reel&>(*tmp.getIm());
+        Reel &re2=dynamic_cast<Reel&>(*tmp.getRe());
+
+        Reel* re_f = new Reel(re2.getData()/getData());
+        Reel* im_f = new Reel(im2.getData()/getData());
+
+        Complexe* result = new Complexe(re_f, im_f);
+
+        return result;
     }
     catch(std::exception &e){}
-*/
+
     throw DonneeException("erreur Reel op/");
 }
 
-Donnee* Reel::operator*(Donnee& t){
-    try{
+Donnee* Reel::operator*(Donnee& t)
+{
+    try
+    {
        Reel &tmp=dynamic_cast<Reel&>(t);
        Reel *resultat=new Reel(data*tmp.getData());
        return resultat;
     }
     catch(std::exception &e){}
-/*
-    try{
+
+    try
+    {
 
        Entier &tmp=dynamic_cast<Entier&>(t);
        Reel *resultat=new Reel(data*tmp.getData());
@@ -129,7 +151,8 @@ Donnee* Reel::operator*(Donnee& t){
     catch(std::exception &e){}
 
 
-    try{
+    try
+    {
 
        Rationnel &tmp=dynamic_cast<Rationnel&>(t);
        Rationnel r(data*10*getDecimales(),10*getDecimales());
@@ -137,15 +160,24 @@ Donnee* Reel::operator*(Donnee& t){
     }
     catch(std::exception &e){}
 
-    try{
-       Complexe &tmp=dynamic_cast<Complexe&>(t);
-       Complexe conv(toQString());
-       Donnee * resultat;
-       resultat=conv*tmp;
-       return resultat;
+    try
+    {
+        Complexe &tmp=dynamic_cast<Complexe&>(t);
+
+
+        Reel &im2=dynamic_cast<Reel&>(*tmp.getIm());
+        Reel &re2=dynamic_cast<Reel&>(*tmp.getRe());
+
+
+        Reel* re_f = new Reel(re2.getData()*getData());
+        Reel* im_f = new Reel(im2.getData()*getData());
+
+        Complexe* result = new Complexe(re_f, im_f);
+
+        return result;
     }
     catch(std::exception &e){}
-
+/*
     try{
 
        Expression &tmp=dynamic_cast<Expression&>(t);
@@ -158,15 +190,18 @@ Donnee* Reel::operator*(Donnee& t){
     throw DonneeException("erreur Reel op*");
 }
 
-Donnee* Reel::operator-(Donnee& t){
-    try{
+Donnee* Reel::operator-(Donnee& t)
+{
+    try
+    {
        Reel &tmp=dynamic_cast<Reel&>(t);
        Reel *resultat=new Reel(data-tmp.getData());
        return resultat;
     }
     catch(std::exception &e){}
-/*
-    try{
+
+    try
+    {
 
        Entier &tmp=dynamic_cast<Entier&>(t);
        Reel *resultat=new Reel(data-tmp.getData());
@@ -175,7 +210,8 @@ Donnee* Reel::operator-(Donnee& t){
     catch(std::exception &e){}
 
 
-    try{
+    try
+    {
 
        Rationnel &tmp=dynamic_cast<Rationnel&>(t);
        Rationnel r(data*10*getDecimales(),10*getDecimales());
@@ -183,16 +219,30 @@ Donnee* Reel::operator-(Donnee& t){
     }
     catch(std::exception &e){}
 
-    try{
-       Complexe &tmp=dynamic_cast<Complexe&>(t);
-       Complexe conv(toQString());
-       Donnee * resultat;
-       resultat=conv-tmp;
-       return resultat;
+    try
+    {
+        Complexe &tmp=dynamic_cast<Complexe&>(t);
+
+        Reel &retmp=dynamic_cast<Reel&>(*tmp.getRe());
+        Reel &imtmp=dynamic_cast<Reel&>(*tmp.getIm());
+
+        double re_d = getData()-retmp.getData();
+        double im_d = imtmp.getData();
+
+        Reel* re=new Reel(re_d);
+        Reel* im=new Reel(im_d);
+
+        Complexe* result= new Complexe(re,im);
+
+
+
+        return result;
+
     }
     catch(std::exception &e){}
 
-    try{
+/*   try
+{
 
        Expression &tmp=dynamic_cast<Expression&>(t);
        QString e;

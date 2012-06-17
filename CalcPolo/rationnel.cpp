@@ -10,27 +10,33 @@
 
 
 Donnee* Rationnel::operator +(Donnee & t){
-    try{
+    try
+    {
        Rationnel &tmp=dynamic_cast<Rationnel&>(t);
        Rationnel *resultat=new Rationnel(num*tmp.denum+tmp.num*denum,denum*tmp.denum);
        return resultat;
     }
     catch(std::exception &e){}
 
-    try{
+    try
+    {
        Entier &tmp=dynamic_cast<Entier&>(t);
 
        return tmp+*this;
     }
     catch(std::exception &e){}
 
-    try{
-       Reel &tmp=dynamic_cast<Reel&>(t);
-       return tmp+*this;
+    try
+    {
+       Reel &tmp1=dynamic_cast<Reel&>(t);
+       double valeur=num/denum;
+       Reel tmp2(valeur);
+       return (tmp1+tmp2);
     }
     catch(std::exception &e){}
 
-    try{
+    try
+    {
        Complexe &tmp=dynamic_cast<Complexe&>(t);
        Complexe conv(toQString());
        Donnee * resultat;
@@ -59,7 +65,7 @@ Donnee* Rationnel::operator -(Donnee & t){
        return resultat;
     }
     catch(std::exception &e){}
-/*
+
     try{
        Entier &tmp=dynamic_cast<Entier&>(t);
        Rationnel r=Rationnel(tmp.getData(),1);
@@ -68,9 +74,10 @@ Donnee* Rationnel::operator -(Donnee & t){
     catch(std::exception &e){}
 
     try{
-       Reel &tmp=dynamic_cast<Reel&>(t);
-       Rationnel r=Rationnel(tmp.getData()*tmp.getDecimales()*10,tmp.getDecimales()*10);
-       return tmp-r;
+        Reel &tmp1=dynamic_cast<Reel&>(t);
+        double valeur=num/denum;
+        Reel tmp2(valeur);
+        return (tmp2-tmp1);
     }
     catch(std::exception &e){}
 
@@ -83,7 +90,7 @@ Donnee* Rationnel::operator -(Donnee & t){
     }
     catch(std::exception &e){}
 
-    try{
+/*    try{
        Expression &tmp=dynamic_cast<Expression&>(t);
        QString e;
        e = "'" + toQString() + " "+ tmp.toQString().remove("'") + " -'";
@@ -96,24 +103,28 @@ Donnee* Rationnel::operator -(Donnee & t){
 }
 
 Donnee* Rationnel::operator /(Donnee & t){
-    try{
+    try
+    {
        Rationnel &tmp=dynamic_cast<Rationnel&>(t);
        Rationnel r(tmp.denum,tmp.num);
        return *this*r;
     }
     catch(std::exception &e){}
-/*
-    try{
+
+    try
+    {
        Entier &tmp=dynamic_cast<Entier&>(t);
        Rationnel r=Rationnel(tmp.getData(),1);
        return tmp/r;
     }
     catch(std::exception &e){}
 
-    try{
-       Reel &tmp=dynamic_cast<Reel&>(t);
-       Rationnel r=Rationnel(tmp.getData()*tmp.getDecimales()*10,tmp.getDecimales()*10);
-       return tmp/r;
+    try
+    {
+        Reel &tmp1=dynamic_cast<Reel&>(t);
+        double valeur=num/denum;
+        Reel tmp2(valeur);
+        return (tmp1/tmp2);
     }
     catch(std::exception &e){}
 
@@ -126,7 +137,7 @@ Donnee* Rationnel::operator /(Donnee & t){
     }
     catch(std::exception &e){}
 
-    try{
+/*    try{
        Expression &tmp=dynamic_cast<Expression&>(t);
        QString e;
        e = "'" + toQString() + " "+ tmp.toQString().remove("'") + " /'";
@@ -141,28 +152,33 @@ Donnee* Rationnel::operator /(Donnee & t){
 
 Donnee* Rationnel::operator*(Donnee& t)
 {
-    try{
+    try
+    {
        Rationnel &tmp=dynamic_cast<Rationnel&>(t);
        Rationnel *resultat=new Rationnel(num*tmp.num,denum*tmp.denum);
        return resultat;
     }
     catch(std::exception &e){}
-/*
-    try{
+
+    try
+    {
        Entier &tmp=dynamic_cast<Entier&>(t);
        Rationnel r=Rationnel(tmp.getData(),1);
        return tmp*r;
     }
     catch(std::exception &e){}
 
-    try{
-       Reel &tmp=dynamic_cast<Reel&>(t);
-       Rationnel r=Rationnel(tmp.getData()*tmp.getDecimales()*10,tmp.getDecimales()*10);
-       return tmp*r;
+    try
+    {
+        Reel &tmp1=dynamic_cast<Reel&>(t);
+        double valeur=num/denum;
+        Reel tmp2(valeur);
+        return (tmp1*tmp2);
     }
     catch(std::exception &e){}
 
-    try{
+    try
+    {
        Complexe &tmp=dynamic_cast<Complexe&>(t);
        Complexe conv(toQString());
        Donnee * resultat;
@@ -171,7 +187,7 @@ Donnee* Rationnel::operator*(Donnee& t)
     }
     catch(std::exception &e){}
 
-    try{
+/*    try{
        Expression &tmp=dynamic_cast<Expression&>(t);
        QString e;
        e = "'" + toQString() +" "+ tmp.toQString().remove("'") + " *'";

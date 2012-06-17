@@ -61,6 +61,7 @@ MainWindow::MainWindow(Pile &pile, QWidget *parent) :
 
 
     CollectionPile::getInstance().addPile(&pile);
+    setFixedSize(660,550);
     emit refresh_signal();
     ui->degUnit->setChecked(true);
     CollectionPile::getInstance().at(CollectionPile::getInstance().getActif())->setType("Reel");

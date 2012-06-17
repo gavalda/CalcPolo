@@ -9,7 +9,8 @@
 
 
 Donnee* Complexe::operator +(Donnee & t){
-    try{
+    try
+    {
         Complexe &tmp=dynamic_cast<Complexe&>(t);
        /* if ((*im + *tmp.im)->toQString()=="0")
             return *re + *tmp.re;*/
@@ -22,7 +23,8 @@ Donnee* Complexe::operator +(Donnee & t){
     }
     catch(std::exception &e){}
 
-    try{
+    try
+    {
        Entier &tmp=dynamic_cast<Entier&>(t);
        Complexe conv(tmp.toQString());
        Donnee * resultat;
@@ -31,8 +33,10 @@ Donnee* Complexe::operator +(Donnee & t){
     }
     catch(std::exception &e){}
 
-    try{
+    try
+    {
        Reel &tmp=dynamic_cast<Reel&>(t);
+
        Complexe conv(tmp.toQString());
        Donnee * resultat;
        resultat=conv+*this;

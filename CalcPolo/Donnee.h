@@ -37,18 +37,39 @@ public:
     virtual Donnee* cube(){throw typeException("erreur cube");}
     virtual Donnee* fact(){throw typeException("erreur fact");}
     virtual QString eval(){throw typeException("erreur eval");}
+
+
     static bool isEntier(const QString& s){QRegExp rx("^\\d+$"); return s.contains (rx);}
-    static bool isReel(const QString& s){
+
+    static bool isReel(const QString& s)
+    {
         QString copie(s);
         copie.replace(',', '.');
         QRegExp rx("^-?\\d*\\.?\\d*$");
-        return copie.contains(rx);}
-    static bool isRationnel(const QString& s){QRegExp rx("^-?\\d*/-?\\d*$");  return s.contains (rx);}
+        return copie.contains(rx);
+        return false;
+    }
+
+    static bool isRationnel(const QString& s)
+    {
+        QRegExp rx1("^-?\\d*/-?\\d*$");
+
+
+
+        if (s.contains(rx1)) return true;
+        else return false;
+
+    }
+
     static bool isExpression(const QString& s){return s.contains ('\'');}
-    static bool isComplexe(const QString& s){
+
+    static bool isComplexe(const QString& s)
+    {
         QString copie(s);
         copie.replace(',', '.');
-        QRegExp rx("^-?\\d*(/|\\.)?.?\\$-?\\d*(/|\\.)?.?$");return copie.contains (rx);}
+        QRegExp rx("^-?\\d*(/|\\.)?.?\\$-?\\d*(/|\\.)?.?$");return copie.contains (rx);
+    }
+
     virtual QString toQString()=0;
 };
 

@@ -63,6 +63,7 @@ MainWindow::MainWindow(Pile &pile, QWidget *parent) :
     Collection_pile::getInstance().addPile(&pile);
     emit refresh_signal();
     ui->degUnit->setChecked(true);
+    Collection_pile::getInstance().at(Collection_pile::getInstance().getActif())->setType("reel");
 
 }
 /*   plus utile car declaration de l'instance unique qui detruit l'objet

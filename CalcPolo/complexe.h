@@ -13,7 +13,7 @@
 class complexe:public D
 {
     Constante*  re;
-    Constante* im;
+    Constante*  im;
 public:
 
     complexe(Constante* _re=0,Constante* _im=0):re(_re), im(_im){}
@@ -26,8 +26,6 @@ public:
     {
         QString copie(s);
 
-       // re=dynamic_cast<Constante*>(type_factory::getInstance().getType((copie.section('$', 0,0))));
-       // im=dynamic_cast<Constante*>(type_factory::getInstance().getType((copie.section('$', 1,1))));
         re=new reel(copie.section('$', 0,0));
         im=new reel(copie.section('$', 1,1));
     }
@@ -49,6 +47,8 @@ public:
     Constante* getRe(){return re;}
 
     Constante* getIm(){return im;}
+
+
 
     QString toQString();
 

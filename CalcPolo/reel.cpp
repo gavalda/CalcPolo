@@ -12,20 +12,20 @@
 
 Donnee* reel::operator +(Donnee & t){
 
-/*    try{
+    try{
 
        entier &tmp=dynamic_cast<entier&>(t);
        reel *resultat=new reel(data+tmp.getData());
        return resultat;
     }
     catch(std::exception &e){}
-*/
+
     try{
 
        reel &tmp=dynamic_cast<reel&>(t);
        reel *resultat=new reel(data+tmp.getData());
        return resultat;
-    }
+       }
     catch(std::exception &e){}
 
   /*  try{
@@ -56,7 +56,7 @@ Donnee* reel::operator +(Donnee & t){
     }
     catch(std::exception &e){}
 */
-    throw typeException("erreur reel");
+    throw typeException("erreur reel op+");
 
 
 }
@@ -109,7 +109,7 @@ Donnee* reel::operator /(Donnee & t){
     }
     catch(std::exception &e){}
 */
-    throw typeException("erreur reel");
+    throw typeException("erreur reel op/");
 }
 
 Donnee* reel::operator*(Donnee& t){
@@ -155,7 +155,7 @@ Donnee* reel::operator*(Donnee& t){
     }
     catch(std::exception &e){}
 */
-    throw typeException("erreur reel");
+    throw typeException("erreur reel op*");
 }
 
 Donnee* reel::operator-(Donnee& t){
@@ -201,7 +201,7 @@ Donnee* reel::operator-(Donnee& t){
     }
     catch(std::exception &e){}
 */
-    throw typeException("erreur reel");
+    throw typeException("erreur reel op-");
 }
 
 
@@ -222,7 +222,7 @@ Donnee* reel::pow(Donnee & t){
     }
     catch(std::exception &e){}
 
-    throw typeException("erreur reel");
+    throw typeException("erreur reel pow");
 }
 
 QString reel::toQString(){

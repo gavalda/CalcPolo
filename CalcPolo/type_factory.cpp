@@ -29,7 +29,7 @@ void type_factory::releaseInstance()
 
 Donnee* type_factory::getType(QString s)
 {
-    if(Collection_pile::getInstance().at(Collection_pile::getInstance().getActif())->getType()=="complexe" && Donnee::isComplexe(s))  //meee Ici il faut rajouter un test un peu comme celui là, mais comment ?
+    if(Collection_pile::getInstance().at(Collection_pile::getInstance().getActif())->getType()=="complexe" && (Donnee::isComplexe(s)||Donnee::isReel(s)))
         {
         return new complexe(s);
         }
@@ -37,12 +37,11 @@ Donnee* type_factory::getType(QString s)
             return new entier(s);
         else if(Collection_pile::getInstance().at(Collection_pile::getInstance().getActif())->getType()=="reel" && Donnee::isReel(s))
             return new reel(s);
-        else if(Collection_pile::getInstance().at(Collection_pile::getInstance().getActif())->getType()=="rationnel" && rationnel::isRationnel(s))
+        else if(Collection_pile::getInstance().at(Collection_pile::getInstance().getActif())->getType()=="rationnel" && (Donnee::isRationnel(s)||Donnee::isEntier(s)))
         {
              try
             {
-                 Donnee* res= new rationnel(s);
-                 return res;
+                return new rationnel(s);
             }
             catch (std::exception &e)
             {

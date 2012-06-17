@@ -245,7 +245,8 @@ void Pile::mod()
 
 void Pile::parser(QString donnee)
 {
-    if(!Expression::isExpression(donnee)){
+    if(!Expression::isExpression(donnee))
+    {
         Donnee* test=0;
         QRegExp rx("\\donnee+");
         QStringList t=(donnee.split(rx));
@@ -299,7 +300,7 @@ void Pile::parser(QString donnee)
                 else
                 {
                     QMessageBox msgBox;
-                    msgBox.setText("Erreur de saisie, type non reconnu");
+                    msgBox.setText("Type non reconnu lors de l'evaluation");
                     msgBox.exec();
                 }
              }
@@ -603,21 +604,24 @@ void Pile::fact(){
 }
 
 void Pile::eval(){
-    if(this->size() > 0){
+    if(this->size() > 0)
+    {
         g->addMemoire(this);
         Donnee *op = pop();
         QString resultat;
-        try{
-       resultat=op->eval();
-       parser(resultat);
-       g->addMemoire(this);
-       }
-       catch (std::exception &e) {
+        try
+        {
+             resultat=op->eval();
+             parser(resultat);
+             g->addMemoire(this);
+        }
+        catch (std::exception &e)
+        {
            QMessageBox msgBox;
             msgBox.setText(e.what());
             msgBox.exec();
            push(op);
-       }
+        }
     }
 }
 

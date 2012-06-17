@@ -17,12 +17,12 @@
 Donnee* entier::operator +(Donnee & t){
     try{
 
-       entier &tmp=dynamic_cast<entier&>(t);    //on s'assure qu'on a bien un entier
+       entier &tmp=dynamic_cast<entier&>(t);            //conversion en entier
        entier *resultat=new entier(data+tmp.getData());
        return resultat;
     }
     catch(std::exception &e){}
-/*
+
     try{
 
        reel &tmp=dynamic_cast<reel&>(t);
@@ -34,9 +34,7 @@ Donnee* entier::operator +(Donnee & t){
     try{
 
        rationnel &tmp=dynamic_cast<rationnel&>(t);
-       Donnee* resultat;
-       rationnel r(data,1);
-       resultat=tmp+r;
+       rationnel *resultat = new rationnel((data*tmp.getDenum()+tmp.getNum())/tmp.getDenum());
        return resultat;
     }
     catch(std::exception &e){}
@@ -50,7 +48,7 @@ Donnee* entier::operator +(Donnee & t){
     }
     catch(std::exception &e){}
 
-    try{
+ /*   try{
        complexe &tmp=dynamic_cast<complexe&>(t);
        complexe conv(toQString());
        Donnee * resultat;
@@ -58,9 +56,9 @@ Donnee* entier::operator +(Donnee & t){
        return resultat;
     }
     catch(std::exception &e){}
-*/
 
-    throw typeException("erreur entier");
+*/
+    throw typeException("erreur entier op+");
 
 
 }
@@ -69,13 +67,25 @@ Donnee* entier::operator /(Donnee & t)
 {
 
     try{
-       entier &tmp=dynamic_cast<entier&>(t);
-       rationnel *resultat=new rationnel(data,tmp.getData());
-       return resultat;
-    }
+            entier &tmp=dynamic_cast<entier&>(t);
+            int a1 = this->getData();
+            int a2 = tmp.getData();
+
+            if(a1%a2==0)
+            {
+                entier *result=new entier(this->getData()/tmp.getData());
+                return result;
+
+            }
+            else
+            {
+                rationnel *result=new rationnel(data,tmp.getData());
+                return result;
+            }
+       }
     catch(std::exception &e){}
-/*
-    try{
+
+/*    try{
        reel &tmp=dynamic_cast<reel&>(t);
        reel *resultat=new reel(data/tmp.getData());
        return resultat;
@@ -107,7 +117,7 @@ Donnee* entier::operator /(Donnee & t)
     }
     catch(std::exception &e){}
 */
-    throw typeException("erreur entier");
+    throw typeException("erreur entier op/");
 }
 
 Donnee* entier::operator*(Donnee& t){
@@ -117,7 +127,7 @@ Donnee* entier::operator*(Donnee& t){
        return resultat;
     }
     catch(std::exception &e){}
-/*
+
     try{
        reel &tmp=dynamic_cast<reel&>(t);
        reel *resultat=new reel(data*tmp.getData());
@@ -141,7 +151,7 @@ Donnee* entier::operator*(Donnee& t){
     }
     catch(std::exception &e){}
 
-    try{
+/*    try{
        complexe &tmp=dynamic_cast<complexe&>(t);
        complexe conv(toQString());
        Donnee * resultat;
@@ -150,7 +160,7 @@ Donnee* entier::operator*(Donnee& t){
     }
     catch(std::exception &e){}
 */
-    throw typeException("erreur entier");
+    throw typeException("erreur entier op*");
 }
 
 Donnee* entier::operator-(Donnee& t){
@@ -196,7 +206,7 @@ Donnee* entier::operator-(Donnee& t){
     }
     catch(std::exception &e){}
 */
-    throw typeException("erreur entier");
+    throw typeException("erreur entier op-");
 }
 
 
@@ -229,7 +239,7 @@ Donnee* entier::mod(Donnee & t){
     }
     catch(std::exception &e){}
 
-    throw typeException("erreur entier");
+    throw typeException("erreur entier mod");
 }
 
 

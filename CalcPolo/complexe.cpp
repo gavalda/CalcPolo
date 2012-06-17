@@ -11,8 +11,8 @@
 Donnee* complexe::operator +(Donnee & t){
     try{
         complexe &tmp=dynamic_cast<complexe&>(t);
-        if ((*im + *tmp.im)->toQString()=="0")
-            return *re + *tmp.re;
+       /* if ((*im + *tmp.im)->toQString()=="0")
+            return *re + *tmp.re;*/
        complexe *res=new complexe;
        res->re= dynamic_cast<Constante*> (*re + *tmp.re);
        res->im= dynamic_cast<Constante*>(*im + *tmp.im);
@@ -40,14 +40,14 @@ Donnee* complexe::operator +(Donnee & t){
     }
     catch(std::exception &e){}
 
-    try{
+ /*   try{
         Expression &tmp=dynamic_cast<Expression&>(t);
         QString e;
         e = "'" + toQString() + " "+ tmp.toQString().remove("'") + " +'";
         return new Expression(e);
     }
     catch(std::exception &e){}
-
+*/
     try{
        rationnel &tmp=dynamic_cast<rationnel&>(t);
        complexe conv(tmp.toQString());
@@ -56,7 +56,8 @@ Donnee* complexe::operator +(Donnee & t){
        return res;
     }
     catch(std::exception &e){}
-    throw typeException("erreur complexe");
+
+    throw typeException("erreur complexe op+");
 
 
 }
@@ -65,13 +66,43 @@ Donnee* complexe::operator /(Donnee & t)
 {
     try{
        complexe &tmp=dynamic_cast<complexe&>(t);
-      Donnee *res;
-       res= *(*this * *(tmp.conjugue())) / *(tmp * *(tmp.conjugue())) ;
-       return res;
-    }
+
+
+        reel &im1=dynamic_cast<reel&>(*this->getIm());
+        reel &re1=dynamic_cast<reel&>(*this->getRe());
+        reel &im2=dynamic_cast<reel&>(*tmp.getIm());
+        reel &re2=dynamic_cast<reel&>(*tmp.getRe());
+        reel &im2sqr=dynamic_cast<reel&>(*im2.sqr());
+        reel &re2sqr=dynamic_cast<reel&>(*re2.sqr());
+
+
+
+
+
+
+
+         reel* re_f = new reel(((re1.getData()*re2.getData())-(im1.getData()*im2.getData()))/(re2sqr.getData()+im2sqr.getData()));
+         reel* im_f = new reel(((im1.getData()*re2.getData())-(re1.getData()*im2.getData()))/(re2sqr.getData()+(im2sqr.getData())));
+
+
+
+
+
+
+
+     /*  double re;
+       double im;
+       complexe *res(re,im);
+      // res= *(*this * *(tmp.conjugue())) / *(tmp * *(tmp.conjugue())) ;
+*/
+
+       complexe* result = new complexe(re_f, im_f);
+       return result;
+
+       }
     catch(std::exception &e){}
 
-       Constante *tmp=dynamic_cast<Constante*>(&t);
+  /*     Constante *tmp=dynamic_cast<Constante*>(&t);
        if (tmp)
        {
        complexe *res=new complexe;
@@ -82,16 +113,16 @@ Donnee* complexe::operator /(Donnee & t)
 
 
 
-    try{
+      try{
            Expression &tmp=dynamic_cast<Expression&>(t);
            QString e;
            e = "'" + toQString() + " "+ tmp.toQString().remove("'") + " /'";
            return new Expression(e);
     }
     catch(std::exception &e){}
+*/
 
-
-    throw typeException("erreur complexe");
+    throw typeException("erreur complexe op/");
 }
 
 Donnee * complexe::operator*(Donnee& t){
@@ -124,7 +155,7 @@ Donnee * complexe::operator*(Donnee& t){
     }
     catch(std::exception &e){}
 
-    try{
+ /*   try{
         Expression &tmp=dynamic_cast<Expression&>(t);
         QString e;
         e = "'" + toQString() + " "+ tmp.toQString().remove("'") + " *'";
@@ -132,7 +163,7 @@ Donnee * complexe::operator*(Donnee& t){
     }
     catch(std::exception &e){}
 
-    try{
+ */  try{
        rationnel &tmp=dynamic_cast<rationnel&>(t);
        complexe conv(tmp.toQString());
        Donnee * res;
@@ -140,7 +171,8 @@ Donnee * complexe::operator*(Donnee& t){
        return res;
     }
     catch(std::exception &e){}
-    throw typeException("erreur complexe");
+
+    throw typeException("erreur complexe op*");
 }
 
 Donnee* complexe::operator-(Donnee& t){
@@ -154,7 +186,7 @@ Donnee* complexe::operator-(Donnee& t){
     }
     catch(std::exception &e){}
 
-    try{
+      try{
        entier &tmp=dynamic_cast<entier&>(t);
        complexe conv(tmp.toQString());
        Donnee * res;
@@ -172,7 +204,7 @@ Donnee* complexe::operator-(Donnee& t){
     }
     catch(std::exception &e){}
 
-    try{
+   /* try{
         Expression &tmp=dynamic_cast<Expression&>(t);
         QString e;
         e = "'" + toQString() + " "+ tmp.toQString().remove("'") + " -'";
@@ -180,7 +212,7 @@ Donnee* complexe::operator-(Donnee& t){
     }
     catch(std::exception &e){}
 
-    try{
+   */ try{
        rationnel &tmp=dynamic_cast<rationnel&>(t);
        complexe conv(tmp.toQString());
        Donnee * res;
@@ -188,7 +220,8 @@ Donnee* complexe::operator-(Donnee& t){
        return res;
     }
     catch(std::exception &e){}
-    throw typeException("erreur complexe");
+
+    throw typeException("erreur complexe op-");
 }
 
 QString complexe::toQString(){

@@ -20,14 +20,25 @@ public:
 
     rationnel(int _num=0,int _denum=1):num(_num),denum(_denum){if (denum==0) throw typeException("Division par 0"); simplifie();}
 
-    rationnel(const QString &s)//pour convertir une QString en rationnel
+    rationnel(const QString &s)                 //convertion QString rationnel
     {
+        QRegExp rx2("^\\d+$");
         QString copie(s);
+        if (copie.contains(rx2))
+        {
+            num=s.toInt();
+            denum=1;
 
-        num=(copie.section('/', 0,0)).toInt();
-        denum=(copie.section('/', 1,1)).toInt();
-         if (denum==0) throw typeException("Division par 0");
-        simplifie();
+        }
+        else
+        {
+            num=(copie.section('/', 0,0)).toInt();
+            denum=(copie.section('/', 1,1)).toInt();
+             if (denum==0) throw typeException("Division par 0");
+            simplifie();
+
+        }
+
 
     }
 

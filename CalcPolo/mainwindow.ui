@@ -598,6 +598,9 @@
        <property name="text">
         <string>Reel</string>
        </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
       </widget>
      </item>
      <item>
@@ -629,7 +632,7 @@
      <x>0</x>
      <y>0</y>
      <width>652</width>
-     <height>18</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">

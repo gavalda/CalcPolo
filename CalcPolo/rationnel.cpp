@@ -16,9 +16,10 @@ Donnee* rationnel::operator +(Donnee & t){
        return resultat;
     }
     catch(std::exception &e){}
-/*
+
     try{
        entier &tmp=dynamic_cast<entier&>(t);
+
        return tmp+*this;
     }
     catch(std::exception &e){}
@@ -38,15 +39,15 @@ Donnee* rationnel::operator +(Donnee & t){
     }
     catch(std::exception &e){}
 
-    try{
+/*    try{
        Expression &tmp=dynamic_cast<Expression&>(t);
        QString e;
        e = "'" + toQString() + " "+ tmp.toQString().remove("'") + " +'";
        return new Expression(e);
     }
     catch(std::exception &e){}
-
 */
+
 
     throw typeException("erreur rationnel op+");
 }

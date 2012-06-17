@@ -49,6 +49,7 @@ protected :
     MainWindow();
     MainWindow (const MainWindow&);
     void operator= (const MainWindow&);
+    virtual void keyPressEvent(QKeyEvent *event);
 
 signals:
     void pushStack_signal(const QString&);

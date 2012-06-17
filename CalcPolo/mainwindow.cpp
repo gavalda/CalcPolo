@@ -10,7 +10,7 @@
 #include <QListWidgetItem>
 #include <QString>
 #include <QTextStream>
-
+#include<QKeyEvent>
 
 
 using namespace std;
@@ -53,7 +53,7 @@ MainWindow::MainWindow(Pile &pile, QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    QObject::connect(this, SIGNAL(keyPress(QKeyEvent*)), this, SLOT(keyPressEvent(QKeyEvent*)));
+   // QObject::connect(this, SIGNAL(keyPress(QKeyEvent*)), this, SLOT(keyPressEvent(QKeyEvent*)));
     QObject::connect(this, SIGNAL(pushStack_signal(const QString&)), this, SLOT(pushStack_slot(const QString&)));
     QObject::connect(this, SIGNAL(cleanList_signal()), this, SLOT(cleanList_slot()));
     QObject::connect(this, SIGNAL(refresh_signal()), this, SLOT(refresh_slot()));
@@ -118,6 +118,11 @@ void MainWindow::on_pushButton9_clicked(){
 
 void MainWindow::on_espace_clicked(){
     ui->lineEdit->insert(" ");
+}
+
+void MainWindow::keyPressEvent(QKeyEvent *event)
+        {
+    ui->lineEdit->insert(event->text());
 }
 
 

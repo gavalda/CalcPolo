@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'MainWindow.ui'
 **
-** Created: Sun 17. Jun 16:07:54 2012
+** Created: Mon 18. Jun 01:06:37 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -65,7 +65,6 @@ public:
     QPushButton *quote;
     QPushButton *backspace;
     QPushButton *espace;
-    QPushButton *affichePile;
     QTabWidget *tabWidget;
     QWidget *Onglet_1;
     QLabel *label;
@@ -88,26 +87,22 @@ public:
     QPushButton *eval;
     QWidget *gridLayoutWidget_2;
     QGridLayout *gridLayout_2;
-    QPushButton *swap;
     QPushButton *sum;
     QPushButton *mean;
-    QPushButton *clear;
-    QPushButton *dup;
-    QPushButton *drop;
     QLineEdit *lineEdit;
     QWidget *gridLayoutWidget_5;
     QGridLayout *gridLayout_5;
-    QPushButton *addition;
     QPushButton *multiplication;
     QPushButton *pow;
     QPushButton *soustraction;
     QPushButton *division;
     QPushButton *mod;
     QPushButton *sign;
+    QPushButton *addition;
     QWidget *verticalLayoutWidget_3;
     QVBoxLayout *verticalLayout_3;
-    QRadioButton *degUnit;
     QRadioButton *radUnit;
+    QRadioButton *degUnit;
     QPushButton *return_Button;
     QWidget *verticalLayoutWidget;
     QVBoxLayout *verticalLayout;
@@ -116,6 +111,12 @@ public:
     QRadioButton *reel_radioButton;
     QRadioButton *complexe_radioButton;
     QRadioButton *show_hide;
+    QWidget *gridLayoutWidget_3;
+    QGridLayout *gridLayout_3;
+    QPushButton *clear;
+    QPushButton *drop;
+    QPushButton *swap;
+    QPushButton *dup;
     QMenuBar *menuBar;
     QMenu *menuFile;
     QMenu *menuEdition;
@@ -127,7 +128,7 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->setEnabled(true);
-        MainWindow->resize(652, 600);
+        MainWindow->resize(650, 600);
         MainWindow->setMinimumSize(QSize(400, 600));
         MainWindow->setMaximumSize(QSize(800, 600));
         MainWindow->setAcceptDrops(false);
@@ -153,10 +154,10 @@ public:
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         list = new QListWidget(centralWidget);
         list->setObjectName(QString::fromUtf8("list"));
-        list->setGeometry(QRect(10, 30, 231, 121));
+        list->setGeometry(QRect(10, 30, 241, 131));
         gridLayoutWidget = new QWidget(centralWidget);
         gridLayoutWidget->setObjectName(QString::fromUtf8("gridLayoutWidget"));
-        gridLayoutWidget->setGeometry(QRect(10, 190, 239, 221));
+        gridLayoutWidget->setGeometry(QRect(10, 200, 241, 201));
         gridLayout = new QGridLayout(gridLayoutWidget);
         gridLayout->setSpacing(6);
         gridLayout->setContentsMargins(11, 11, 11, 11);
@@ -242,9 +243,6 @@ public:
 
         gridLayout->addWidget(espace, 4, 1, 1, 1);
 
-        affichePile = new QPushButton(centralWidget);
-        affichePile->setObjectName(QString::fromUtf8("affichePile"));
-        affichePile->setGeometry(QRect(280, 60, 75, 61));
         tabWidget = new QTabWidget(centralWidget);
         tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
         tabWidget->setEnabled(true);
@@ -255,13 +253,13 @@ public:
         tabWidget->addTab(Onglet_1, QString());
         label = new QLabel(centralWidget);
         label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(260, 40, 151, 16));
+        label->setGeometry(QRect(260, 30, 151, 16));
         NbAffiche = new QSpinBox(centralWidget);
         NbAffiche->setObjectName(QString::fromUtf8("NbAffiche"));
         NbAffiche->setGeometry(QRect(420, 30, 42, 22));
         gridLayoutWidget_7 = new QWidget(centralWidget);
         gridLayoutWidget_7->setObjectName(QString::fromUtf8("gridLayoutWidget_7"));
-        gridLayoutWidget_7->setGeometry(QRect(410, 290, 239, 141));
+        gridLayoutWidget_7->setGeometry(QRect(350, 200, 239, 151));
         gridLayout_7 = new QGridLayout(gridLayoutWidget_7);
         gridLayout_7->setSpacing(6);
         gridLayout_7->setContentsMargins(11, 11, 11, 11);
@@ -339,17 +337,12 @@ public:
 
         gridLayoutWidget_2 = new QWidget(centralWidget);
         gridLayoutWidget_2->setObjectName(QString::fromUtf8("gridLayoutWidget_2"));
-        gridLayoutWidget_2->setGeometry(QRect(420, 220, 239, 61));
+        gridLayoutWidget_2->setGeometry(QRect(480, 140, 158, 25));
         gridLayout_2 = new QGridLayout(gridLayoutWidget_2);
         gridLayout_2->setSpacing(6);
         gridLayout_2->setContentsMargins(11, 11, 11, 11);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
         gridLayout_2->setContentsMargins(0, 0, 0, 0);
-        swap = new QPushButton(gridLayoutWidget_2);
-        swap->setObjectName(QString::fromUtf8("swap"));
-
-        gridLayout_2->addWidget(swap, 0, 0, 1, 1);
-
         sum = new QPushButton(gridLayoutWidget_2);
         sum->setObjectName(QString::fromUtf8("sum"));
 
@@ -360,38 +353,18 @@ public:
 
         gridLayout_2->addWidget(mean, 0, 2, 1, 1);
 
-        clear = new QPushButton(gridLayoutWidget_2);
-        clear->setObjectName(QString::fromUtf8("clear"));
-
-        gridLayout_2->addWidget(clear, 1, 0, 1, 1);
-
-        dup = new QPushButton(gridLayoutWidget_2);
-        dup->setObjectName(QString::fromUtf8("dup"));
-
-        gridLayout_2->addWidget(dup, 1, 1, 1, 1);
-
-        drop = new QPushButton(gridLayoutWidget_2);
-        drop->setObjectName(QString::fromUtf8("drop"));
-
-        gridLayout_2->addWidget(drop, 1, 2, 1, 1);
-
         lineEdit = new QLineEdit(centralWidget);
         lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
-        lineEdit->setGeometry(QRect(10, 160, 231, 20));
+        lineEdit->setGeometry(QRect(10, 170, 241, 21));
         lineEdit->setReadOnly(true);
         gridLayoutWidget_5 = new QWidget(centralWidget);
         gridLayoutWidget_5->setObjectName(QString::fromUtf8("gridLayoutWidget_5"));
-        gridLayoutWidget_5->setGeometry(QRect(320, 190, 77, 199));
+        gridLayoutWidget_5->setGeometry(QRect(260, 200, 77, 199));
         gridLayout_5 = new QGridLayout(gridLayoutWidget_5);
         gridLayout_5->setSpacing(6);
         gridLayout_5->setContentsMargins(11, 11, 11, 11);
         gridLayout_5->setObjectName(QString::fromUtf8("gridLayout_5"));
         gridLayout_5->setContentsMargins(0, 0, 0, 0);
-        addition = new QPushButton(gridLayoutWidget_5);
-        addition->setObjectName(QString::fromUtf8("addition"));
-
-        gridLayout_5->addWidget(addition, 0, 0, 1, 1);
-
         multiplication = new QPushButton(gridLayoutWidget_5);
         multiplication->setObjectName(QString::fromUtf8("multiplication"));
 
@@ -422,30 +395,35 @@ public:
 
         gridLayout_5->addWidget(sign, 5, 0, 1, 1);
 
+        addition = new QPushButton(gridLayoutWidget_5);
+        addition->setObjectName(QString::fromUtf8("addition"));
+
+        gridLayout_5->addWidget(addition, 0, 0, 1, 1);
+
         verticalLayoutWidget_3 = new QWidget(centralWidget);
         verticalLayoutWidget_3->setObjectName(QString::fromUtf8("verticalLayoutWidget_3"));
-        verticalLayoutWidget_3->setGeometry(QRect(280, 130, 81, 44));
+        verticalLayoutWidget_3->setGeometry(QRect(380, 120, 81, 44));
         verticalLayout_3 = new QVBoxLayout(verticalLayoutWidget_3);
         verticalLayout_3->setSpacing(6);
         verticalLayout_3->setContentsMargins(11, 11, 11, 11);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         verticalLayout_3->setContentsMargins(0, 0, 0, 0);
-        degUnit = new QRadioButton(verticalLayoutWidget_3);
-        degUnit->setObjectName(QString::fromUtf8("degUnit"));
-
-        verticalLayout_3->addWidget(degUnit);
-
         radUnit = new QRadioButton(verticalLayoutWidget_3);
         radUnit->setObjectName(QString::fromUtf8("radUnit"));
 
         verticalLayout_3->addWidget(radUnit);
 
+        degUnit = new QRadioButton(verticalLayoutWidget_3);
+        degUnit->setObjectName(QString::fromUtf8("degUnit"));
+
+        verticalLayout_3->addWidget(degUnit);
+
         return_Button = new QPushButton(centralWidget);
         return_Button->setObjectName(QString::fromUtf8("return_Button"));
-        return_Button->setGeometry(QRect(260, 190, 51, 61));
+        return_Button->setGeometry(QRect(350, 360, 241, 41));
         verticalLayoutWidget = new QWidget(centralWidget);
         verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(380, 70, 111, 92));
+        verticalLayoutWidget->setGeometry(QRect(260, 80, 111, 88));
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
         verticalLayout->setSpacing(6);
         verticalLayout->setContentsMargins(11, 11, 11, 11);
@@ -474,11 +452,39 @@ public:
 
         show_hide = new QRadioButton(centralWidget);
         show_hide->setObjectName(QString::fromUtf8("show_hide"));
-        show_hide->setGeometry(QRect(410, 190, 82, 18));
+        show_hide->setGeometry(QRect(260, 50, 82, 18));
+        gridLayoutWidget_3 = new QWidget(centralWidget);
+        gridLayoutWidget_3->setObjectName(QString::fromUtf8("gridLayoutWidget_3"));
+        gridLayoutWidget_3->setGeometry(QRect(480, 50, 160, 80));
+        gridLayout_3 = new QGridLayout(gridLayoutWidget_3);
+        gridLayout_3->setSpacing(6);
+        gridLayout_3->setContentsMargins(11, 11, 11, 11);
+        gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
+        gridLayout_3->setContentsMargins(0, 0, 0, 0);
+        clear = new QPushButton(gridLayoutWidget_3);
+        clear->setObjectName(QString::fromUtf8("clear"));
+
+        gridLayout_3->addWidget(clear, 0, 1, 1, 1);
+
+        drop = new QPushButton(gridLayoutWidget_3);
+        drop->setObjectName(QString::fromUtf8("drop"));
+
+        gridLayout_3->addWidget(drop, 1, 1, 1, 1);
+
+        swap = new QPushButton(gridLayoutWidget_3);
+        swap->setObjectName(QString::fromUtf8("swap"));
+
+        gridLayout_3->addWidget(swap, 0, 0, 1, 1);
+
+        dup = new QPushButton(gridLayoutWidget_3);
+        dup->setObjectName(QString::fromUtf8("dup"));
+
+        gridLayout_3->addWidget(dup, 1, 0, 1, 1);
+
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 652, 21));
+        menuBar->setGeometry(QRect(0, 0, 650, 21));
         menuFile = new QMenu(menuBar);
         menuFile->setObjectName(QString::fromUtf8("menuFile"));
         menuEdition = new QMenu(menuBar);
@@ -560,8 +566,6 @@ public:
         backspace->setShortcut(QApplication::translate("MainWindow", "Backspace", 0, QApplication::UnicodeUTF8));
         espace->setText(QApplication::translate("MainWindow", "Space", 0, QApplication::UnicodeUTF8));
         espace->setShortcut(QApplication::translate("MainWindow", "Space", 0, QApplication::UnicodeUTF8));
-        affichePile->setText(QApplication::translate("MainWindow", "Load", 0, QApplication::UnicodeUTF8));
-        affichePile->setShortcut(QApplication::translate("MainWindow", "A", 0, QApplication::UnicodeUTF8));
 #ifndef QT_NO_ACCESSIBILITY
         Onglet_1->setAccessibleName(QString());
 #endif // QT_NO_ACCESSIBILITY
@@ -584,23 +588,18 @@ public:
         inv->setText(QApplication::translate("MainWindow", "Inv", 0, QApplication::UnicodeUTF8));
         fact->setText(QApplication::translate("MainWindow", "!", 0, QApplication::UnicodeUTF8));
         eval->setText(QApplication::translate("MainWindow", "Eval", 0, QApplication::UnicodeUTF8));
-        swap->setText(QApplication::translate("MainWindow", "Swap", 0, QApplication::UnicodeUTF8));
         sum->setText(QApplication::translate("MainWindow", "Sum", 0, QApplication::UnicodeUTF8));
         mean->setText(QApplication::translate("MainWindow", "Mean", 0, QApplication::UnicodeUTF8));
-        clear->setText(QApplication::translate("MainWindow", "Clear", 0, QApplication::UnicodeUTF8));
-        clear->setShortcut(QApplication::translate("MainWindow", "Ctrl+C", 0, QApplication::UnicodeUTF8));
-        dup->setText(QApplication::translate("MainWindow", "Dup", 0, QApplication::UnicodeUTF8));
-        drop->setText(QApplication::translate("MainWindow", "Drop", 0, QApplication::UnicodeUTF8));
         lineEdit->setText(QString());
-        addition->setText(QApplication::translate("MainWindow", "+", 0, QApplication::UnicodeUTF8));
         multiplication->setText(QApplication::translate("MainWindow", "*", 0, QApplication::UnicodeUTF8));
         pow->setText(QApplication::translate("MainWindow", "Pow", 0, QApplication::UnicodeUTF8));
         soustraction->setText(QApplication::translate("MainWindow", "-", 0, QApplication::UnicodeUTF8));
         division->setText(QApplication::translate("MainWindow", "/", 0, QApplication::UnicodeUTF8));
         mod->setText(QApplication::translate("MainWindow", "Mod", 0, QApplication::UnicodeUTF8));
         sign->setText(QApplication::translate("MainWindow", "Sign", 0, QApplication::UnicodeUTF8));
-        degUnit->setText(QApplication::translate("MainWindow", "Degr\303\251", 0, QApplication::UnicodeUTF8));
+        addition->setText(QApplication::translate("MainWindow", "+", 0, QApplication::UnicodeUTF8));
         radUnit->setText(QApplication::translate("MainWindow", "Radiant", 0, QApplication::UnicodeUTF8));
+        degUnit->setText(QApplication::translate("MainWindow", "Degr\303\251", 0, QApplication::UnicodeUTF8));
         return_Button->setText(QApplication::translate("MainWindow", "Return", 0, QApplication::UnicodeUTF8));
         return_Button->setShortcut(QApplication::translate("MainWindow", "Return", 0, QApplication::UnicodeUTF8));
         entier_radioButton->setText(QApplication::translate("MainWindow", "Entier", 0, QApplication::UnicodeUTF8));
@@ -608,6 +607,11 @@ public:
         reel_radioButton->setText(QApplication::translate("MainWindow", "Reel", 0, QApplication::UnicodeUTF8));
         complexe_radioButton->setText(QApplication::translate("MainWindow", "Complexe", 0, QApplication::UnicodeUTF8));
         show_hide->setText(QApplication::translate("MainWindow", "Hide", 0, QApplication::UnicodeUTF8));
+        clear->setText(QApplication::translate("MainWindow", "Clear", 0, QApplication::UnicodeUTF8));
+        clear->setShortcut(QApplication::translate("MainWindow", "Ctrl+C", 0, QApplication::UnicodeUTF8));
+        drop->setText(QApplication::translate("MainWindow", "Drop", 0, QApplication::UnicodeUTF8));
+        swap->setText(QApplication::translate("MainWindow", "Swap", 0, QApplication::UnicodeUTF8));
+        dup->setText(QApplication::translate("MainWindow", "Dup", 0, QApplication::UnicodeUTF8));
         menuFile->setTitle(QApplication::translate("MainWindow", "File", 0, QApplication::UnicodeUTF8));
         menuEdition->setTitle(QApplication::translate("MainWindow", "Edition", 0, QApplication::UnicodeUTF8));
     } // retranslateUi

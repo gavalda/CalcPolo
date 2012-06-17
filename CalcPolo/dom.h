@@ -17,13 +17,12 @@ public:
     Dom(Pile & p);
 
     ~Dom(){}
-
     void ecrire(QString fileName);
 
     void lire(QString fileName);
 
 private :
-    Pile& _pile;/*!< Pile a charger ou a sauvegarder*/
+    Pile& p;/*!< Pile a charger ou a sauvegarder*/
 };
 
 #endif // DOM_H

@@ -10,38 +10,43 @@ TARGET = projet_lo21
 TEMPLATE = app
 
 
-SOURCES += main.cpp\
-        mainwindow.cpp \
-    pile.cpp \
-    entier.cpp \
-    reel.cpp \
-    collection_pile.cpp \
-    rationnel.cpp \
-    complexe.cpp \
-    expression.cpp \
-    type_factory.cpp \
-    dom.cpp \
-    gardien.cpp
+SOURCES +=\
+    Complexe.cpp \
+    CollectionPile.cpp \
+    Memento.cpp \
+    Dom.cpp \
+    Entier.cpp \
+    Expression.cpp \
+    MainWindow.cpp \
+    Main.cpp \
+    DonneeFactory.cpp \
+    Pile.cpp \
+    Rationnel.cpp \
+    Reel.cpp \
+    DonneeException.cpp
 
-HEADERS  += mainwindow.h \
-    pile.h \
+HEADERS  += \
     Donnee.h \
-    entier.h \
-    reel.h \
-    collection_pile.h \
-    rationnel.h \
-    complexe.h \
     Constante.h \
     D.h \
-    expression.h \
-    type_factory.h \
-    dom.h \
-    gardien.h \
     D.h \
     Constante.h \
     D.h \
-    Donnee.h
+    Donnee.h \
+    CollectionPile.h \
+    Memento.h \
+    Complexe.h \
+    Dom.h \
+    Entier.h \
+    Expression.h \
+    MainWindow.h \
+    DonneeFactory.h \
+    Pile.h \
+    Rationnel.h \
+    Reel.h \
+    DonneeException.h
 
-FORMS    += mainwindow.ui
+FORMS    += \
+    MainWindow.ui
 
 QT += xml

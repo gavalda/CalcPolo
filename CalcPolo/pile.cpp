@@ -1,20 +1,20 @@
-#include "pile.h"
-#include "entier.h"
-#include "reel.h"
-#include "rationnel.h"
-#include "complexe.h"
-#include "expression.h"
+#include "Pile.h"
+#include "Entier.h"
+#include "Reel.h"
+#include "Rationnel.h"
+#include "Complexe.h"
+#include "Expression.h"
 
 #include "dom.h"
 #include <cmath>
-#include "typeexception.h"
+#include "DonneeException.h"
 #include <QRegExp>
 
 
 using namespace std;
 
 Pile::Pile():nbElt(5){
-    g=new gardien;
+    g=new Memento;
     degre=true;
 }
 
@@ -42,9 +42,9 @@ Pile::~Pile(){
 Pile& Pile::clone() const{
     Pile *p=new Pile();
     for(int i=0; i<size(); i++){
-        p->push(type_factory::getInstance().getType(at(i)->toQString()));
+        p->push(DonneeFactory::getInstance().getType(at(i)->toQString()));
     }
-    p->setGardien(getGardien());
+    p->setMemento(getMemento());
     p->setDegre(getDegre());
     return *p;
 }
@@ -53,9 +53,9 @@ Pile& Pile::clone() const{
 Pile& Pile::duplique() const{
     Pile *p=new Pile();
     for(int i=0; i<size(); i++){
-        p->push(type_factory::getInstance().getType(at(i)->toQString()));
+        p->push(DonneeFactory::getInstance().getType(at(i)->toQString()));
     }
-    p->setGardien(new gardien);
+    p->setMemento(new Memento);
     p->setDegre(getDegre());
     return *p;
 }
@@ -88,7 +88,7 @@ void Pile::mean(const unsigned int x){
             for(iterator it=begin(); it!=end(); it++){
                 sumVect=*sumVect+*(*it);
             }
-            entier taille(size());
+            Entier taille(size());
             sumVect=*sumVect/taille;
             push(sumVect);
     }
@@ -294,7 +294,7 @@ void Pile::parser(QString donnee)
                     fact();
             else
             {
-                test=type_factory::getInstance().getType(t[i]);
+                test=DonneeFactory::getInstance().getType(t[i]);
                 if (test)
                     push(test);
                 else

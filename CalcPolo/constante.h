@@ -25,7 +25,7 @@ public:
     virtual Donnee* sqrt()=0;
     virtual Donnee* sqr()=0;
     virtual Donnee* cube()=0;
-    virtual QString eval(){throw typeException("erreur eval");}
+    virtual QString eval(){throw DonneeException("erreur eval");}
 };
 
 

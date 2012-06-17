@@ -1,10 +1,10 @@
 #include <exception>
-#include "entier.h"
-#include "reel.h"
-#include "rationnel.h"
-#include "complexe.h"
-#include "expression.h"
-#include "typeexception.h"
+#include "Entier.h"
+#include "Reel.h"
+#include "Rationnel.h"
+#include "Complexe.h"
+#include "Expression.h"
+#include "DonneeException.h"
 
 #include <cmath>
 #include "mainwindow.h"
@@ -14,27 +14,27 @@
 
 
 
-Donnee* entier::operator +(Donnee & t){
+Donnee* Entier::operator +(Donnee & t){
     try{
 
-       entier &tmp=dynamic_cast<entier&>(t);            //conversion en entier
-       entier *resultat=new entier(data+tmp.getData());
+       Entier &tmp=dynamic_cast<Entier&>(t);            //conversion en entier
+       Entier *resultat=new Entier(data+tmp.getData());
        return resultat;
     }
     catch(std::exception &e){}
 
     try{
 
-       reel &tmp=dynamic_cast<reel&>(t);
-       reel *resultat=new reel(data+tmp.getData());
+       Reel &tmp=dynamic_cast<Reel&>(t);
+       Reel *resultat=new Reel(data+tmp.getData());
        return resultat;
     }
     catch(std::exception &e){}
 
     try{
 
-       rationnel &tmp=dynamic_cast<rationnel&>(t);
-       rationnel *resultat = new rationnel((data*tmp.getDenum()+tmp.getNum())/tmp.getDenum());
+       Rationnel &tmp=dynamic_cast<Rationnel&>(t);
+       Rationnel *resultat = new Rationnel((data*tmp.getDenum()+tmp.getNum())/tmp.getDenum());
        return resultat;
     }
     catch(std::exception &e){}
@@ -49,8 +49,8 @@ Donnee* entier::operator +(Donnee & t){
     catch(std::exception &e){}
 
  /*   try{
-       complexe &tmp=dynamic_cast<complexe&>(t);
-       complexe conv(toQString());
+       Complexe &tmp=dynamic_cast<Complexe&>(t);
+       Complexe conv(toQString());
        Donnee * resultat;
        resultat=conv+tmp;
        return resultat;
@@ -58,43 +58,43 @@ Donnee* entier::operator +(Donnee & t){
     catch(std::exception &e){}
 
 */
-    throw typeException("erreur entier op+");
+    throw DonneeException("erreur Entier op+");
 
 
 }
 
-Donnee* entier::operator /(Donnee & t)
+Donnee* Entier::operator /(Donnee & t)
 {
 
     try{
-            entier &tmp=dynamic_cast<entier&>(t);
+            Entier &tmp=dynamic_cast<Entier&>(t);
             int a1 = this->getData();
             int a2 = tmp.getData();
 
             if(a1%a2==0)
             {
-                entier *result=new entier(this->getData()/tmp.getData());
+                Entier *result=new Entier(this->getData()/tmp.getData());
                 return result;
 
             }
             else
             {
-                rationnel *result=new rationnel(data,tmp.getData());
+                Rationnel *result=new Rationnel(data,tmp.getData());
                 return result;
             }
        }
     catch(std::exception &e){}
 
 /*    try{
-       reel &tmp=dynamic_cast<reel&>(t);
-       reel *resultat=new reel(data/tmp.getData());
+       Reel &tmp=dynamic_cast<Reel&>(t);
+       Reel *resultat=new Reel(data/tmp.getData());
        return resultat;
     }
     catch(std::exception &e){}
 
     try{
-       rationnel &tmp=dynamic_cast<rationnel&>(t);
-       rationnel *resultat=new rationnel(data*tmp.getDenum(), tmp.getNum());
+       Rationnel &tmp=dynamic_cast<Rationnel&>(t);
+       Rationnel *resultat=new Rationnel(data*tmp.getDenum(), tmp.getNum());
        return resultat;
     }
     catch(std::exception &e){}
@@ -109,35 +109,35 @@ Donnee* entier::operator /(Donnee & t)
     catch(std::exception &e){}
 
     try{
-       complexe &tmp=dynamic_cast<complexe&>(t);
-       complexe conv(toQString());
+       Complexe &tmp=dynamic_cast<Complexe&>(t);
+       Complexe conv(toQString());
        Donnee * resultat;
        resultat=conv/tmp;
        return resultat;
     }
     catch(std::exception &e){}
 */
-    throw typeException("erreur entier op/");
+    throw DonneeException("erreur Entier op/");
 }
 
-Donnee* entier::operator*(Donnee& t){
+Donnee* Entier::operator*(Donnee& t){
     try{
-       entier &tmp=dynamic_cast<entier&>(t);
-       entier *resultat=new entier(data*tmp.getData());
+       Entier &tmp=dynamic_cast<Entier&>(t);
+       Entier *resultat=new Entier(data*tmp.getData());
        return resultat;
     }
     catch(std::exception &e){}
 
     try{
-       reel &tmp=dynamic_cast<reel&>(t);
-       reel *resultat=new reel(data*tmp.getData());
+       Reel &tmp=dynamic_cast<Reel&>(t);
+       Reel *resultat=new Reel(data*tmp.getData());
        return resultat;
     }
     catch(std::exception &e){}
 
     try{
-       rationnel &tmp=dynamic_cast<rationnel&>(t);
-       rationnel *resultat=new rationnel(data*tmp.getNum(), tmp.getDenum());
+       Rationnel &tmp=dynamic_cast<Rationnel&>(t);
+       Rationnel *resultat=new Rationnel(data*tmp.getNum(), tmp.getDenum());
        return resultat;
     }
     catch(std::exception &e){}
@@ -152,37 +152,37 @@ Donnee* entier::operator*(Donnee& t){
     catch(std::exception &e){}
 
 /*    try{
-       complexe &tmp=dynamic_cast<complexe&>(t);
-       complexe conv(toQString());
+       Complexe &tmp=dynamic_cast<Complexe&>(t);
+       Complexe conv(toQString());
        Donnee * resultat;
        resultat=conv*tmp;
        return resultat;
     }
     catch(std::exception &e){}
 */
-    throw typeException("erreur entier op*");
+    throw DonneeException("erreur Entier op*");
 }
 
-Donnee* entier::operator-(Donnee& t){
+Donnee* Entier::operator-(Donnee& t){
     try{
-       entier &tmp=dynamic_cast<entier&>(t);
-       entier *resultat=new entier(data-tmp.getData());
+       Entier &tmp=dynamic_cast<Entier&>(t);
+       Entier *resultat=new Entier(data-tmp.getData());
        return resultat;
     }
     catch(std::exception &e){}
 /*
     try{
-       reel &tmp=dynamic_cast<reel&>(t);
-       reel *resultat=new reel(data-tmp.getData());
+       Reel &tmp=dynamic_cast<Reel&>(t);
+       Reel *resultat=new Reel(data-tmp.getData());
        return resultat;
     }
     catch(std::exception &e){}
 
     try{
 
-       rationnel &tmp=dynamic_cast<rationnel&>(t);
+       Rationnel &tmp=dynamic_cast<Rationnel&>(t);
        Donnee* resultat;
-       rationnel r(data,1);
+       Rationnel r(data,1);
        resultat=r-tmp;
        return resultat;
     }
@@ -198,176 +198,176 @@ Donnee* entier::operator-(Donnee& t){
     catch(std::exception &e){}
 
     try{
-       complexe &tmp=dynamic_cast<complexe&>(t);
-       complexe conv(toQString());
+       Complexe &tmp=dynamic_cast<Complexe&>(t);
+       Complexe conv(toQString());
        Donnee * resultat;
        resultat=conv-tmp;
        return resultat;
     }
     catch(std::exception &e){}
 */
-    throw typeException("erreur entier op-");
+    throw DonneeException("erreur Entier op-");
 }
 
 
-Donnee* entier::pow(Donnee & t){
+Donnee* Entier::pow(Donnee & t){
     try{
 
-       entier &tmp=dynamic_cast<entier&>(t);
-       entier *resultat=new entier(std::pow(double(data),tmp.getData()));
+       Entier &tmp=dynamic_cast<Entier&>(t);
+       Entier *resultat=new Entier(std::pow(double(data),tmp.getData()));
        return resultat;
     }
     catch(std::exception &e){}
 /*
     try{
 
-       reel &tmp=dynamic_cast<reel&>(t);
-       entier *resultat=new entier(std::pow(data,tmp.getData()));
+       Reel &tmp=dynamic_cast<Reel&>(t);
+       Entier *resultat=new Entier(std::pow(data,tmp.getData()));
        return resultat;
     }
     catch(std::exception &e){}
     */
-    throw typeException("erreur entier");
+    throw DonneeException("erreur Entier");
 }
 
-Donnee* entier::mod(Donnee & t){
+Donnee* Entier::mod(Donnee & t){
     try{
 
-       entier &tmp=dynamic_cast<entier&>(t);
-       entier *resultat=new entier(data % tmp.getData());
+       Entier &tmp=dynamic_cast<Entier&>(t);
+       Entier *resultat=new Entier(data % tmp.getData());
        return resultat;
     }
     catch(std::exception &e){}
 
-    throw typeException("erreur entier mod");
+    throw DonneeException("erreur Entier mod");
 }
 
 
 
-QString entier::toQString(){
+QString Entier::toQString(){
     QString resultat;
     QTextStream ss(&resultat);
     ss << data;
     return resultat;
 }
 
-Donnee* entier::sign(){
+Donnee* Entier::sign(){
     double tmp(-data);
-    Donnee* t= new entier(tmp);
+    Donnee* t= new Entier(tmp);
     return t;
 }
 
-Donnee* entier::sinus(bool degre){
+Donnee* Entier::sinus(bool degre){
     double tmp(data);
     if(degre)
         tmp=sin(tmp*M_PI /180);
     else
         tmp=sin(tmp);
-    Donnee* t= new reel(tmp);
+    Donnee* t= new Reel(tmp);
     return t;
 }
 
-Donnee* entier::cosinus(bool degre){
+Donnee* Entier::cosinus(bool degre){
     double tmp(data);
     if(degre)
         tmp=cos(tmp*M_PI /180);
     else
         tmp=cos(tmp);
-    Donnee* t= new reel(tmp);
+    Donnee* t= new Reel(tmp);
     return t;
 }
 
-Donnee* entier::tangente(bool degre){
+Donnee* Entier::tangente(bool degre){
     double tmp(data);
     if(degre)
         tmp=tan(tmp*M_PI /180);
     else
         tmp=tan(tmp);
-    Donnee* t= new reel(tmp);
+    Donnee* t= new Reel(tmp);
     return t;
 }
 
-Donnee* entier::sinush(bool degre){
+Donnee* Entier::sinush(bool degre){
     double tmp(data);
     if(degre)
         tmp=sinh(tmp*M_PI /180);
     else
         tmp=sinh(tmp);
-    Donnee* t= new reel(tmp);
+    Donnee* t= new Reel(tmp);
     return t;
 }
 
-Donnee* entier::cosinush(bool degre){
+Donnee* Entier::cosinush(bool degre){
     double tmp(data);
     if(degre)
         tmp=cosh(tmp*M_PI /180);
     else
         tmp=cosh(tmp);
-    Donnee* t= new reel(tmp);
+    Donnee* t= new Reel(tmp);
     return t;
 }
 
-Donnee* entier::tangenteh(bool degre){
+Donnee* Entier::tangenteh(bool degre){
     double tmp(data);
     if(degre)
         tmp=tanh(tmp*M_PI /180);
     else
         tmp=tanh(tmp);
-    Donnee* t= new reel(tmp);
+    Donnee* t= new Reel(tmp);
     return t;
 }
 
 
 
-Donnee* entier::ln(){
+Donnee* Entier::ln(){
     double tmp(data);
     tmp=std::log(tmp);
-    Donnee* t= new reel(tmp);
+    Donnee* t= new Reel(tmp);
     return t;
 }
 
-Donnee* entier::log(){
+Donnee* Entier::log(){
     double tmp(data);
     tmp=log10(tmp);
-    Donnee* t= new reel(tmp);
+    Donnee* t= new Reel(tmp);
     return t;
 }
 
-Donnee* entier::inv(){
+Donnee* Entier::inv(){
     double tmp(data);
     tmp=1/tmp;
-    Donnee* t= new reel(tmp);
+    Donnee* t= new Reel(tmp);
     return t;
 }
 
-Donnee* entier::sqrt(){
+Donnee* Entier::sqrt(){
     double tmp(data);
     tmp=std::sqrt(tmp);
-    Donnee* t= new reel(tmp);
+    Donnee* t= new Reel(tmp);
     return t;
 }
 
-Donnee* entier::sqr(){
+Donnee* Entier::sqr(){
     double tmp(data);
     tmp=std::pow(tmp,2);
-    Donnee* t= new reel(tmp);
+    Donnee* t= new Reel(tmp);
     return t;
 }
 
-Donnee* entier::cube(){
+Donnee* Entier::cube(){
     double tmp(data);
     tmp=std::pow(tmp,3);
-    Donnee* t= new reel(tmp);
+    Donnee* t= new Reel(tmp);
     return t;
 }
 
-Donnee* entier::fact(){
+Donnee* Entier::fact(){
     int tmp(1);
 
     for(int i=1; i<=data; i++)
         tmp*=i;
 
-    Donnee* t= new reel(tmp);
+    Donnee* t= new Reel(tmp);
     return t;
 }
 

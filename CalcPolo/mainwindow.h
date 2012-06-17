@@ -3,10 +3,10 @@
 
 #include <QMainWindow>
 #include <QStack>
-#include "pile.h"
+#include "Pile.h"
 #include "Donnee.h"
 #include <QString>
-#include "collection_pile.h"
+#include "CollectionPile.h"
 #include <QFileDialog>
 #include <QMessageBox>
 

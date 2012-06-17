@@ -1,12 +1,12 @@
-#include "dom.h"
-#include "entier.h"
-#include "reel.h"
-#include "rationnel.h"
-#include "complexe.h"
-#include "type_factory.h"
+#include "DOM.h"
+#include "Entier.h"
+#include "Reel.h"
+#include "Rationnel.h"
+#include "Complexe.h"
+#include "DonneeFactory.h"
 
 
-Dom::Dom(Pile & pile): _pile(pile){}
+Dom::Dom(Pile & pile): p(pile){}
 
 
 void Dom::ecrire(QString fileName)
@@ -28,9 +28,9 @@ void Dom::ecrire(QString fileName)
     out.setDevice(&file); // association du flux au fichier
 
 
-    for(int i=0; i<_pile.size(); i++){
+    for(int i=0; i<p.size(); i++){
         sauvegarde=doc.createElement("sauvegarde");
-        sauvegarde.setAttribute("valeur", _pile.at(i)->toQString());
+        sauvegarde.setAttribute("valeur", p.at(i)->toQString());
         racine.appendChild(sauvegarde);
     }
 
@@ -68,9 +68,9 @@ void Dom::lire(QString fileName)
         if( e.tagName() == "sauvegarde" )
         {
             Donnee *t;
-            t=type_factory::getInstance().getType(e.attribute( "valeur", "" ));
+            t=DonneeFactory::getInstance().getType(e.attribute( "valeur", "" ));
 
-            _pile.push(t);
+            p.push(t);
 
         }
       }

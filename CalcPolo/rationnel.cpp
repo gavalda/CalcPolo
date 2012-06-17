@@ -1,38 +1,38 @@
-#include "rationnel.h"
-#include "complexe.h"
+#include "Rationnel.h"
+#include "Complexe.h"
 #include <QDataStream>
 #include <cmath>
 
-#include "reel.h"
-#include "entier.h"
+#include "Reel.h"
+#include "Entier.h"
 #include "expression.h"
 
 
 
-Donnee* rationnel::operator +(Donnee & t){
+Donnee* Rationnel::operator +(Donnee & t){
     try{
-       rationnel &tmp=dynamic_cast<rationnel&>(t);
-       rationnel *resultat=new rationnel(num*tmp.denum+tmp.num*denum,denum*tmp.denum);
+       Rationnel &tmp=dynamic_cast<Rationnel&>(t);
+       Rationnel *resultat=new Rationnel(num*tmp.denum+tmp.num*denum,denum*tmp.denum);
        return resultat;
     }
     catch(std::exception &e){}
 
     try{
-       entier &tmp=dynamic_cast<entier&>(t);
+       Entier &tmp=dynamic_cast<Entier&>(t);
 
        return tmp+*this;
     }
     catch(std::exception &e){}
 
     try{
-       reel &tmp=dynamic_cast<reel&>(t);
+       Reel &tmp=dynamic_cast<Reel&>(t);
        return tmp+*this;
     }
     catch(std::exception &e){}
 
     try{
-       complexe &tmp=dynamic_cast<complexe&>(t);
-       complexe conv(toQString());
+       Complexe &tmp=dynamic_cast<Complexe&>(t);
+       Complexe conv(toQString());
        Donnee * resultat;
        resultat=conv+tmp;
        return resultat;
@@ -49,34 +49,34 @@ Donnee* rationnel::operator +(Donnee & t){
 */
 
 
-    throw typeException("erreur rationnel op+");
+    throw DonneeException("erreur Rationnel op+");
 }
 
-Donnee* rationnel::operator -(Donnee & t){
+Donnee* Rationnel::operator -(Donnee & t){
     try{
-       rationnel &tmp=dynamic_cast<rationnel&>(t);
-       rationnel *resultat=new rationnel(num*tmp.denum-tmp.num*denum,denum*tmp.denum);
+       Rationnel &tmp=dynamic_cast<Rationnel&>(t);
+       Rationnel *resultat=new Rationnel(num*tmp.denum-tmp.num*denum,denum*tmp.denum);
        return resultat;
     }
     catch(std::exception &e){}
 /*
     try{
-       entier &tmp=dynamic_cast<entier&>(t);
-       rationnel r=rationnel(tmp.getData(),1);
+       Entier &tmp=dynamic_cast<Entier&>(t);
+       Rationnel r=Rationnel(tmp.getData(),1);
        return tmp-r;
     }
     catch(std::exception &e){}
 
     try{
-       reel &tmp=dynamic_cast<reel&>(t);
-       rationnel r=rationnel(tmp.getData()*tmp.getDecimales()*10,tmp.getDecimales()*10);
+       Reel &tmp=dynamic_cast<Reel&>(t);
+       Rationnel r=Rationnel(tmp.getData()*tmp.getDecimales()*10,tmp.getDecimales()*10);
        return tmp-r;
     }
     catch(std::exception &e){}
 
     try{
-       complexe &tmp=dynamic_cast<complexe&>(t);
-       complexe conv(toQString());
+       Complexe &tmp=dynamic_cast<Complexe&>(t);
+       Complexe conv(toQString());
        Donnee * resultat;
        resultat=conv-tmp;
        return resultat;
@@ -92,34 +92,34 @@ Donnee* rationnel::operator -(Donnee & t){
     catch(std::exception &e){}
 */
 
-    throw typeException("erreur rationnel op-");
+    throw DonneeException("erreur Rationnel op-");
 }
 
-Donnee* rationnel::operator /(Donnee & t){
+Donnee* Rationnel::operator /(Donnee & t){
     try{
-       rationnel &tmp=dynamic_cast<rationnel&>(t);
-       rationnel r(tmp.denum,tmp.num);
+       Rationnel &tmp=dynamic_cast<Rationnel&>(t);
+       Rationnel r(tmp.denum,tmp.num);
        return *this*r;
     }
     catch(std::exception &e){}
 /*
     try{
-       entier &tmp=dynamic_cast<entier&>(t);
-       rationnel r=rationnel(tmp.getData(),1);
+       Entier &tmp=dynamic_cast<Entier&>(t);
+       Rationnel r=Rationnel(tmp.getData(),1);
        return tmp/r;
     }
     catch(std::exception &e){}
 
     try{
-       reel &tmp=dynamic_cast<reel&>(t);
-       rationnel r=rationnel(tmp.getData()*tmp.getDecimales()*10,tmp.getDecimales()*10);
+       Reel &tmp=dynamic_cast<Reel&>(t);
+       Rationnel r=Rationnel(tmp.getData()*tmp.getDecimales()*10,tmp.getDecimales()*10);
        return tmp/r;
     }
     catch(std::exception &e){}
 
     try{
-       complexe &tmp=dynamic_cast<complexe&>(t);
-       complexe conv(toQString());
+       Complexe &tmp=dynamic_cast<Complexe&>(t);
+       Complexe conv(toQString());
        Donnee * resultat;
        resultat=conv/tmp;
        return resultat;
@@ -135,36 +135,36 @@ Donnee* rationnel::operator /(Donnee & t){
     catch(std::exception &e){}
 */
 
-    throw typeException("erreur rationnel op/");
+    throw DonneeException("erreur Rationnel op/");
 }
 
 
-Donnee* rationnel::operator*(Donnee& t)
+Donnee* Rationnel::operator*(Donnee& t)
 {
     try{
-       rationnel &tmp=dynamic_cast<rationnel&>(t);
-       rationnel *resultat=new rationnel(num*tmp.num,denum*tmp.denum);
+       Rationnel &tmp=dynamic_cast<Rationnel&>(t);
+       Rationnel *resultat=new Rationnel(num*tmp.num,denum*tmp.denum);
        return resultat;
     }
     catch(std::exception &e){}
 /*
     try{
-       entier &tmp=dynamic_cast<entier&>(t);
-       rationnel r=rationnel(tmp.getData(),1);
+       Entier &tmp=dynamic_cast<Entier&>(t);
+       Rationnel r=Rationnel(tmp.getData(),1);
        return tmp*r;
     }
     catch(std::exception &e){}
 
     try{
-       reel &tmp=dynamic_cast<reel&>(t);
-       rationnel r=rationnel(tmp.getData()*tmp.getDecimales()*10,tmp.getDecimales()*10);
+       Reel &tmp=dynamic_cast<Reel&>(t);
+       Rationnel r=Rationnel(tmp.getData()*tmp.getDecimales()*10,tmp.getDecimales()*10);
        return tmp*r;
     }
     catch(std::exception &e){}
 
     try{
-       complexe &tmp=dynamic_cast<complexe&>(t);
-       complexe conv(toQString());
+       Complexe &tmp=dynamic_cast<Complexe&>(t);
+       Complexe conv(toQString());
        Donnee * resultat;
        resultat=conv*tmp;
        return resultat;
@@ -180,30 +180,30 @@ Donnee* rationnel::operator*(Donnee& t)
     catch(std::exception &e){}
 
 */
-    throw typeException("erreur rationnel op*");
+    throw DonneeException("erreur Rationnel op*");
 }
 
-Donnee* rationnel::pow(Donnee & t){
+Donnee* Rationnel::pow(Donnee & t){
     try{
 
-       entier &tmp=dynamic_cast<entier&>(t);
-       rationnel *resultat=new rationnel(std::pow(double(num),tmp.getData()), std::pow(double(denum), tmp.getData()));
+       Entier &tmp=dynamic_cast<Entier&>(t);
+       Rationnel *resultat=new Rationnel(std::pow(double(num),tmp.getData()), std::pow(double(denum), tmp.getData()));
        return resultat;
     }
     catch(std::exception &e){}
 /*
     try{
 
-       reel &tmp=dynamic_cast<reel&>(t);
-       rationnel *resultat=new rationnel(std::pow(num,tmp.getData()), std::pow(denum, tmp.getData()));
+       Reel &tmp=dynamic_cast<Reel&>(t);
+       Rationnel *resultat=new Rationnel(std::pow(num,tmp.getData()), std::pow(denum, tmp.getData()));
        return resultat;
     }
     catch(std::exception &e){}
 */
-    throw typeException("erreur rationnel pow");
+    throw DonneeException("erreur Rationnel pow");
 }
 
-int rationnel::pgcd(int a, int b) const {
+int Rationnel::pgcd(int a, int b) const {
     if (a==0||b==0) return 0;
     if (a<0) a=-a;
     if (b<0) b=-b;
@@ -213,7 +213,7 @@ int rationnel::pgcd(int a, int b) const {
     return a;
 }
 
-void rationnel::simplifie(){
+void Rationnel::simplifie(){
     if (num==0) { denum=1; return; }
     if (denum==0) return;
     int p=pgcd(num,denum);
@@ -226,7 +226,7 @@ void rationnel::simplifie(){
 }
 
 
-QString rationnel::toQString(){
+QString Rationnel::toQString(){
     QString resultat;
     QTextStream ss(&resultat);
     ss << num;
@@ -235,120 +235,120 @@ QString rationnel::toQString(){
     return resultat;
 }
 
-QString rationnel::eval(){
+QString Rationnel::eval(){
     QString resultat;
     QTextStream ss(&resultat);
     ss << (double)num/(double)denum;
     return resultat;
 }
 
-Donnee* rationnel::sign(){
+Donnee* Rationnel::sign(){
     double tmp(-num/denum);
-    Donnee* t= new rationnel(tmp);
+    Donnee* t= new Rationnel(tmp);
     return t;
 }
 
 
-Donnee* rationnel::sinus(bool degre){
+Donnee* Rationnel::sinus(bool degre){
     double tmp(num/denum);
     if(degre)
         tmp=sin(tmp*M_PI /180);
     else
         tmp=sin(tmp);
 
-    Donnee* t= new reel(tmp);
+    Donnee* t= new Reel(tmp);
     return t;
 }
 
-Donnee* rationnel::cosinus(bool degre){
+Donnee* Rationnel::cosinus(bool degre){
     double tmp(num/denum);
     if(degre)
         tmp=cos(tmp*M_PI /180);
     else
         tmp=cos(tmp);
-    Donnee* t= new reel(tmp);
+    Donnee* t= new Reel(tmp);
     return t;
 }
 
-Donnee* rationnel::tangente(bool degre){
+Donnee* Rationnel::tangente(bool degre){
     double tmp(num/denum);
     if(degre)
         tmp=tan(tmp*M_PI /180);
     else
         tmp=tan(tmp);
-    Donnee* t= new reel(tmp);
+    Donnee* t= new Reel(tmp);
     return t;
 }
 
-Donnee* rationnel::sinush(bool degre){
+Donnee* Rationnel::sinush(bool degre){
     double tmp(num/denum);
     if(degre)
         tmp=sinh(tmp*M_PI /180);
     else
         tmp=sinh(tmp);
-    Donnee* t= new reel(tmp);
+    Donnee* t= new Reel(tmp);
     return t;
 }
 
-Donnee* rationnel::cosinush(bool degre){
+Donnee* Rationnel::cosinush(bool degre){
     double tmp(num/denum);
     if(degre)
         tmp=cosh(tmp*M_PI /180);
     else
         tmp=cosh(tmp);
-    Donnee* t= new reel(tmp);
+    Donnee* t= new Reel(tmp);
     return t;
 }
 
-Donnee* rationnel::tangenteh(bool degre){
+Donnee* Rationnel::tangenteh(bool degre){
     double tmp(num/denum);
     if(degre)
         tmp=tanh(tmp*M_PI /180);
     else
         tmp=tanh(tmp);
-    Donnee* t= new reel(tmp);
+    Donnee* t= new Reel(tmp);
     return t;
 }
 
 
-Donnee* rationnel::ln(){
+Donnee* Rationnel::ln(){
     double tmp(num/denum);
     tmp=std::log(tmp);
-    Donnee* t= new reel(tmp);
+    Donnee* t= new Reel(tmp);
     return t;
 }
 
-Donnee* rationnel::log(){
+Donnee* Rationnel::log(){
     double tmp(num/denum);
     tmp=log10(tmp);
-    Donnee* t= new reel(tmp);
+    Donnee* t= new Reel(tmp);
     return t;
 }
 
-Donnee* rationnel::inv(){
+Donnee* Rationnel::inv(){
     double tmp(num/denum);
     tmp=1/tmp;
-    Donnee* t= new reel(tmp);
+    Donnee* t= new Reel(tmp);
     return t;
 }
 
-Donnee* rationnel::sqrt(){
+Donnee* Rationnel::sqrt(){
     double tmp(num/denum);
     tmp=std::sqrt(tmp);
-    Donnee* t= new reel(tmp);
+    Donnee* t= new Reel(tmp);
     return t;
 }
 
-Donnee* rationnel::sqr(){
+Donnee* Rationnel::sqr(){
     double tmp(num/denum);
     tmp=std::pow (tmp,2);
-    Donnee* t= new reel(tmp);
+    Donnee* t= new Reel(tmp);
     return t;
 }
 
-Donnee* rationnel::cube(){
+Donnee* Rationnel::cube(){
     double tmp(num/denum);
     tmp=std::pow (tmp,3);
-    Donnee* t= new reel(tmp);
+    Donnee* t= new Reel(tmp);
     return t;
 }

@@ -9,12 +9,12 @@
 
 
 
-class entier:public Constante
+class Entier:public Constante
 {
     int data;
 public:
-    entier(int val=0):data(val){}
-    entier(const QString &s)//pour convertir une QString en int
+    Entier(int val=0):data(val){}
+    Entier(const QString &s)//pour convertir une QString en int
         {data = s.toInt();}
     int getData(){return data;}
     Donnee* operator +(Donnee & t);

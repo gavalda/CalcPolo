@@ -6,16 +6,16 @@
 #include <QString>
 #include <sstream>
 #include <QStringList>
-#include "type_factory.h"
+#include "DonneeFactory.h"
 
-#include "gardien.h"
+#include "Memento.h"
 
 
 class Pile : public QStack <Donnee *>
 {
 
     int  nbElt;
-    gardien* g;
+    Memento* g;
     bool degre;
     std::string type;                       //meee
 
@@ -29,9 +29,9 @@ public:
     void charger(QString fileName);
     Pile& clone() const;
     Pile& duplique()const;
-    void setGardien(gardien* _g){g=_g;}
+    void setMemento(Memento* _g){g=_g;}
     void setNbElt(int nb){nbElt=nb;}
-    gardien* getGardien()const{return g;}
+    Memento* getMemento()const{return g;}
     void swap(unsigned int x,unsigned int y);
     void sum(const unsigned int x);
     void mean(const unsigned int x);

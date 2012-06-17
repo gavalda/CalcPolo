@@ -1,11 +1,11 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "pile.h"
+#include "Pile.h"
 
-#include "entier.h"
-#include "reel.h"
-#include "rationnel.h"
-#include "complexe.h"
+#include "Entier.h"
+#include "Reel.h"
+#include "Rationnel.h"
+#include "Complexe.h"
 #include <QListWidget>
 #include <QListWidgetItem>
 #include <QString>
@@ -60,10 +60,10 @@ MainWindow::MainWindow(Pile &pile, QWidget *parent) :
     QObject::connect(ui->show_hide, SIGNAL(clicked()),this, SLOT(hide_show_offon()));
 
 
-    Collection_pile::getInstance().addPile(&pile);
+    CollectionPile::getInstance().addPile(&pile);
     emit refresh_signal();
     ui->degUnit->setChecked(true);
-    Collection_pile::getInstance().at(Collection_pile::getInstance().getActif())->setType("reel");
+    CollectionPile::getInstance().at(CollectionPile::getInstance().getActif())->setType("Reel");
 
 }
 /*   plus utile car declaration de l'instance unique qui detruit l'objet
@@ -124,7 +124,7 @@ void MainWindow::on_return_Button_clicked(){
 
     if (ui->lineEdit->text()!="")
     {
-    Collection_pile::getInstance().at(Collection_pile::getInstance().getActif())->parser(ui->lineEdit->text());
+    CollectionPile::getInstance().at(CollectionPile::getInstance().getActif())->parser(ui->lineEdit->text());
     //dans la pile active
     refresh_signal();
     ui->lineEdit->clear();
@@ -137,32 +137,32 @@ void MainWindow::on_affichePile_clicked(){
 }
 
 void MainWindow::on_swap_clicked(){
-    Collection_pile::getInstance().at(Collection_pile::getInstance().getActif())->swap(0, 1);
+    CollectionPile::getInstance().at(CollectionPile::getInstance().getActif())->swap(0, 1);
     emit refresh_signal();
 }
 
 void MainWindow::on_sum_clicked(){
-    Collection_pile::getInstance().at(Collection_pile::getInstance().getActif())->sum(10);
+    CollectionPile::getInstance().at(CollectionPile::getInstance().getActif())->sum(10);
     emit refresh_signal();
 }
 
 void MainWindow::on_mean_clicked(){
-    Collection_pile::getInstance().at(Collection_pile::getInstance().getActif())->mean(10);
+    CollectionPile::getInstance().at(CollectionPile::getInstance().getActif())->mean(10);
     emit refresh_signal();
 }
 
 void MainWindow::on_clear_clicked(){
-    Collection_pile::getInstance().at(Collection_pile::getInstance().getActif())->clear();
+    CollectionPile::getInstance().at(CollectionPile::getInstance().getActif())->clear();
     emit cleanList_signal();
 }
 
 void MainWindow::on_dup_clicked(){
-    Collection_pile::getInstance().at(Collection_pile::getInstance().getActif())->dup();
+    CollectionPile::getInstance().at(CollectionPile::getInstance().getActif())->dup();
     emit refresh_signal();
 }
 
 void MainWindow::on_drop_clicked(){
-    Collection_pile::getInstance().at(Collection_pile::getInstance().getActif())->drop();
+    CollectionPile::getInstance().at(CollectionPile::getInstance().getActif())->drop();
     emit refresh_signal();
 }
 
@@ -183,10 +183,10 @@ void MainWindow::cleanList_slot(){
 void MainWindow::refresh_slot(){
     ui->list->clear();
     ui->NbAffiche->clear();
-    int n=Collection_pile::getInstance().at(Collection_pile::getInstance().getActif())->getNb();
+    int n=CollectionPile::getInstance().at(CollectionPile::getInstance().getActif())->getNb();
     ui->NbAffiche->setValue(n);
-    for(int i=Collection_pile::getInstance().at(Collection_pile::getInstance().getActif())->size()-1; i>=0 && n>0; i--){
-        ui->list->addItem((Collection_pile::getInstance().at(Collection_pile::getInstance().getActif())->at(i))->toQString());
+    for(int i=CollectionPile::getInstance().at(CollectionPile::getInstance().getActif())->size()-1; i>=0 && n>0; i--){
+        ui->list->addItem((CollectionPile::getInstance().at(CollectionPile::getInstance().getActif())->at(i))->toQString());
         n--;
     }
 }
@@ -307,7 +307,7 @@ void MainWindow::on_fact_clicked(){
 }
 
 void MainWindow::on_eval_clicked(){
-    Collection_pile::getInstance().at(Collection_pile::getInstance().getActif())->eval();
+    CollectionPile::getInstance().at(CollectionPile::getInstance().getActif())->eval();
     refresh_signal();
 }
 
@@ -328,22 +328,22 @@ void MainWindow::on_undo_clicked(){
 }
 
 void MainWindow::on_redo_clicked(){
-    Collection_pile::getInstance().at(Collection_pile::getInstance().getActif())->undo();
+    CollectionPile::getInstance().at(CollectionPile::getInstance().getActif())->undo();
     emit refresh_signal();
 
 }
 
 void MainWindow::createOnglet()
 {
-    Collection_pile::getInstance().addPile(Collection_pile::getInstance().at(Collection_pile::getInstance().getActif()));
+    CollectionPile::getInstance().addPile(CollectionPile::getInstance().at(CollectionPile::getInstance().getActif()));
 
 }
 
 void MainWindow::on_tabWidget_currentChanged(unsigned int index)
 {
-    if(index>=Collection_pile::getInstance().size())
+    if(index>=CollectionPile::getInstance().size())
     createOnglet();
-    Collection_pile::getInstance().setActif(index);
+    CollectionPile::getInstance().setActif(index);
     emit refresh_signal();
 }
 
@@ -359,21 +359,21 @@ void MainWindow::on_actionNouvel_onglet_2_triggered()
     QWidget *ajout = new QTabWidget(this);
     QString res;
     QTextStream ss(&res);
-    ss << "Onglet "<< Collection_pile::getInstance().size();
+    ss << "Onglet "<< CollectionPile::getInstance().size();
 
         ui->tabWidget->addTab(ajout,res);
-        ui->tabWidget->setCurrentIndex(Collection_pile::getInstance().size()-1);
+        ui->tabWidget->setCurrentIndex(CollectionPile::getInstance().size()-1);
 }
 
 void MainWindow::on_actionAnnuler_triggered()
 {
-    Collection_pile::getInstance().at(Collection_pile::getInstance().getActif())->undo();
+    CollectionPile::getInstance().at(CollectionPile::getInstance().getActif())->undo();
    emit refresh_signal();
 }
 
 void MainWindow::on_actionR_tablir_triggered()
 {
-    Collection_pile::getInstance().at(Collection_pile::getInstance().getActif())->redo();
+    CollectionPile::getInstance().at(CollectionPile::getInstance().getActif())->redo();
    emit refresh_signal();
 }
 
@@ -387,8 +387,8 @@ void MainWindow::on_tabWidget_tabCloseRequested(int index)
     if (index>0)
     {
 
-    delete Collection_pile::getInstance().at(index);
-        Collection_pile::getInstance().erase(Collection_pile::getInstance().begin()+index);
+    delete CollectionPile::getInstance().at(index);
+        CollectionPile::getInstance().erase(CollectionPile::getInstance().begin()+index);
     ui->tabWidget->removeTab(index);
 
     }
@@ -406,19 +406,19 @@ void MainWindow::on_nbelt_textChanged(const QString &arg1){}
 void MainWindow::on_nbelt_textEdited(const QString &arg1)
 {
     int n=arg1.toInt();
-    Collection_pile::getInstance().at(Collection_pile::getInstance().getActif())->setNbElt(n);
+    CollectionPile::getInstance().at(CollectionPile::getInstance().getActif())->setNbElt(n);
     emit refresh_signal();
 }
 
 void MainWindow::on_charger_triggered(){
     QString fichier = QFileDialog::getOpenFileName(this, "Ouvrir un fichier", QString(), "XML files (*.xml)");
-    Collection_pile::getInstance().at(Collection_pile::getInstance().getActif())->charger(fichier);
+    CollectionPile::getInstance().at(CollectionPile::getInstance().getActif())->charger(fichier);
     emit refresh_signal();
 }
 
 void MainWindow::on_sauvegarder_triggered(){
     QString fichier = QFileDialog::getSaveFileName(this, "Enregistrer un fichier", QString(), "XML files (*.xml)");
-    Collection_pile::getInstance().at(Collection_pile::getInstance().getActif())->sauvegarder(fichier);
+    CollectionPile::getInstance().at(CollectionPile::getInstance().getActif())->sauvegarder(fichier);
     emit refresh_signal();
 }
 
@@ -429,18 +429,18 @@ void MainWindow::on_spinBox_valueChanged(int arg1)
 
 void MainWindow::on_NbAffiche_valueChanged(int arg1)
 {
-    Collection_pile::getInstance().at(Collection_pile::getInstance().getActif())->setNbElt(arg1);
+    CollectionPile::getInstance().at(CollectionPile::getInstance().getActif())->setNbElt(arg1);
     emit refresh_signal();
 }
 
 void MainWindow::on_degUnit_clicked()
 {
-    Collection_pile::getInstance().at(Collection_pile::getInstance().getActif())->setDegre(true);
+    CollectionPile::getInstance().at(CollectionPile::getInstance().getActif())->setDegre(true);
 }
 
 void MainWindow::on_radUnit_clicked()
 {
-    Collection_pile::getInstance().at(Collection_pile::getInstance().getActif())->setDegre(false);
+    CollectionPile::getInstance().at(CollectionPile::getInstance().getActif())->setDegre(false);
 }
 
 
@@ -452,21 +452,21 @@ void MainWindow::on_radUnit_clicked()
 void MainWindow::on_complexe_radioButton_clicked()   //meeee
 {
 
-    Collection_pile::getInstance().at(Collection_pile::getInstance().getActif())->setType("complexe");
+    CollectionPile::getInstance().at(CollectionPile::getInstance().getActif())->setType("complexe");
 
 }
 
 void MainWindow::on_reel_radioButton_clicked()
 {
-    Collection_pile::getInstance().at(Collection_pile::getInstance().getActif())->setType("reel");
+    CollectionPile::getInstance().at(CollectionPile::getInstance().getActif())->setType("reel");
 }
 
 void MainWindow::on_rationnel_radioButton_clicked()
 {
-    Collection_pile::getInstance().at(Collection_pile::getInstance().getActif())->setType("rationnel");
+    CollectionPile::getInstance().at(CollectionPile::getInstance().getActif())->setType("Rationnel");
 }
 
 void MainWindow::on_entier_radioButton_clicked()
 {
-    Collection_pile::getInstance().at(Collection_pile::getInstance().getActif())->setType("entier");
+    CollectionPile::getInstance().at(CollectionPile::getInstance().getActif())->setType("entier");
 }

@@ -5,29 +5,29 @@
 #include <sstream>
 #include <QString>
 #include "Constante.h"
-#include "type_factory.h"
-#include "reel.h"
+#include "DonneeFactory.h"
+#include "Reel.h"
 
 #include "D.h"
 
-class complexe:public D
+class Complexe:public D
 {
     Constante*  re;
     Constante*  im;
 public:
 
-    complexe(Constante* _re=0,Constante* _im=0):re(_re), im(_im){}
+    Complexe(Constante* _re=0,Constante* _im=0):re(_re), im(_im){}
 
 
 
     Donnee* conjugue();
 
-    complexe(const QString &s)//pour convertir une QString en complexe
+    Complexe(const QString &s)//pour convertir une QString en complexe
     {
         QString copie(s);
 
-        re=new reel(copie.section('$', 0,0));
-        im=new reel(copie.section('$', 1,1));
+        re=new Reel(copie.section('$', 0,0));
+        im=new Reel(copie.section('$', 1,1));
     }
 
     Donnee* operator +(Donnee & t);

@@ -1,5 +1,5 @@
-#include "expression.h"
-#include "type_factory.h"
+#include "Expression.h"
+#include "DonneeFactory.h"
 
 
 
@@ -8,7 +8,6 @@ Expression::Expression(QString& exp1): exp(exp1)
 }
 
 Donnee* Expression::operator +(Donnee & t){
-
     exp = exp.remove(exp.size()-1,exp.size()-1) + ' ' + t.toQString().remove("'") + ' ' + "+'";
     return new Expression(exp);
 }
@@ -42,14 +41,12 @@ Donnee* Expression::pow(Donnee & t)
 {
     exp = exp.remove(exp.size()-1,exp.size()-1) + ' ' + t.toQString().remove("'") + ' ' + "pow'";
     return new Expression(exp);
-
 }
 
 Donnee* Expression::mod(Donnee & t)
 {
     exp = exp.remove(exp.size()-1,exp.size()-1) + ' ' + t.toQString().remove("'") + ' ' + "mod'";
     return new Expression(exp);
-
 }
 
 Donnee* Expression::sign()

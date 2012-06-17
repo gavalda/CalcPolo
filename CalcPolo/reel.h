@@ -9,12 +9,12 @@
 #include <QRegExp>
 
 
-class reel:public Constante
+class Reel:public Constante
 {
     double data;
 public:
-    reel(double val=0):data(val){}
-    reel(const QString &s)//pour convertir une QString en double
+    Reel(double val=0):data(val){}
+    Reel(const QString &s)//pour convertir une QString en double
     {
         QString copie(s);
         copie.replace(',', '.');

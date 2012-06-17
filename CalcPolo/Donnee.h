@@ -4,7 +4,7 @@
 #include <sstream>
 #include <QString>
 #include <QTextStream>
-#include "typeexception.h"
+#include "DonneeException.h"
 #include <QMessageBox>
 
 
@@ -20,23 +20,23 @@ public:
     virtual Donnee* operator/(Donnee & t)=0;
     virtual Donnee* operator*(Donnee & t)=0;
     virtual Donnee* operator-(Donnee & t)=0;
-    virtual Donnee* pow(Donnee & t){throw typeException("erreur pow");}
-    virtual Donnee* mod(Donnee & t){throw typeException("erreur mod");}
-    virtual Donnee* sign(){throw typeException("erreur sign");}
-    virtual Donnee* sinus(bool degre=false){throw typeException("erreur sinus");}
-    virtual Donnee* cosinus(bool degre=false){throw typeException("erreur cosinus");}
-    virtual Donnee* tangente(bool degre=false){throw typeException("erreur tangente");}
-    virtual Donnee* sinush(bool degre=false){throw typeException("erreur sinush");}
-    virtual Donnee* cosinush(bool degre=false){throw typeException("erreur cosinush");}
-    virtual Donnee* tangenteh(bool degre=false){throw typeException("erreur tangenteh");}
-    virtual Donnee* ln(){throw typeException("erreur ln");}
-    virtual Donnee* log(){throw typeException("erreur log");}
-    virtual Donnee* inv(){throw typeException("erreur inv");}
-    virtual Donnee* sqrt(){throw typeException("erreur sqrt");}
-    virtual Donnee* sqr(){throw typeException("erreur sqr");}
-    virtual Donnee* cube(){throw typeException("erreur cube");}
-    virtual Donnee* fact(){throw typeException("erreur fact");}
-    virtual QString eval(){throw typeException("erreur eval");}
+    virtual Donnee* pow(Donnee & t){throw DonneeException("erreur pow");}
+    virtual Donnee* mod(Donnee & t){throw DonneeException("erreur mod");}
+    virtual Donnee* sign(){throw DonneeException("erreur sign");}
+    virtual Donnee* sinus(bool degre=false){throw DonneeException("erreur sinus");}
+    virtual Donnee* cosinus(bool degre=false){throw DonneeException("erreur cosinus");}
+    virtual Donnee* tangente(bool degre=false){throw DonneeException("erreur tangente");}
+    virtual Donnee* sinush(bool degre=false){throw DonneeException("erreur sinush");}
+    virtual Donnee* cosinush(bool degre=false){throw DonneeException("erreur cosinush");}
+    virtual Donnee* tangenteh(bool degre=false){throw DonneeException("erreur tangenteh");}
+    virtual Donnee* ln(){throw DonneeException("erreur ln");}
+    virtual Donnee* log(){throw DonneeException("erreur log");}
+    virtual Donnee* inv(){throw DonneeException("erreur inv");}
+    virtual Donnee* sqrt(){throw DonneeException("erreur sqrt");}
+    virtual Donnee* sqr(){throw DonneeException("erreur sqr");}
+    virtual Donnee* cube(){throw DonneeException("erreur cube");}
+    virtual Donnee* fact(){throw DonneeException("erreur fact");}
+    virtual QString eval(){throw DonneeException("erreur eval");}
 
 
     static bool isEntier(const QString& s){QRegExp rx("^\\d+$"); return s.contains (rx);}

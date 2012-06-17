@@ -2,12 +2,12 @@
 #include "mainwindow.h"
 #include <QStack>
 #include "pile.h"
-#include "entier.h"
+#include "Entier.h"
 #include <iostream>
-#include "rationnel.h"
-#include "reel.h"
+#include "Rationnel.h"
+#include "Reel.h"
 
-#include "gardien.h"
+#include "Memento.h"
 
 
 

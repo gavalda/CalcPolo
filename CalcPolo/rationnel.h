@@ -7,20 +7,20 @@
 #include <QString>
 
 #include "Constante.h"
-#include "typeexception.h"
+#include "DonneeException.h"
 #include <QRegExp>
 
 
 
-class rationnel:public Constante
+class Rationnel:public Constante
 {
     int num;
     int denum;
 public:
 
-    rationnel(int _num=0,int _denum=1):num(_num),denum(_denum){if (denum==0) throw typeException("Division par 0"); simplifie();}
+    Rationnel(int _num=0,int _denum=1):num(_num),denum(_denum){if (denum==0) throw DonneeException("Division par 0"); simplifie();}
 
-    rationnel(const QString &s)                 //convertion QString rationnel
+    Rationnel(const QString &s)                 //convertion QString Rationnel
     {
         QRegExp rx2("^\\d+$");
         QString copie(s);
@@ -34,7 +34,7 @@ public:
         {
             num=(copie.section('/', 0,0)).toInt();
             denum=(copie.section('/', 1,1)).toInt();
-             if (denum==0) throw typeException("Division par 0");
+             if (denum==0) throw DonneeException("Division par 0");
             simplifie();
 
         }

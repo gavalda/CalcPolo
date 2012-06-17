@@ -10,6 +10,15 @@
 
 #include "Memento.h"
 
+/// \file Pile.h
+/// \author Clémence BLOT, Benoît GAVALDA
+/// \brief Pile Classe de nos piles, héritant de QStack. Ce sont des piles de Donnee.
+///
+/// \param nbElt Nombre d'élément de la pile
+/// \param g Memento qui permet le undo redo
+/// \param degree boléen qui est vrai si on est en mode degré, faux si en radian.
+/// \param type string{Complexe, Reel, Rationnel, Entier} qui indique le mode de la calculatrice.
+///
 
 class Pile : public QStack <Donnee *>
 {
@@ -17,14 +26,13 @@ class Pile : public QStack <Donnee *>
     int  nbElt;
     Memento* g;
     bool degre;
-    std::string type;                       //meee
+    std::string type;
 
 public:
 
     ~Pile();
     Pile();
-    bool getDegre() const {return degre;}
-    void setDegre(bool deg){degre=deg;}
+
     void sauvegarder(QString fileName);
     void charger(QString fileName);
     Pile& clone() const;
@@ -35,6 +43,7 @@ public:
     void swap(unsigned int x,unsigned int y);
     void sum(const unsigned int x);
     void mean(const unsigned int x);
+
     void dup(){if(!isEmpty()){push(top());}}
     void drop(){if(!isEmpty()){pop();}}
     void addition();
@@ -64,8 +73,11 @@ public:
 
     void eval();
 
-    void setType(std::string d){type = d;}  //meee
-    std::string getType(){return type;}        //meee
+    bool getDegre() const {return degre;}
+    void setDegre(bool deg){degre=deg;}
+
+    void setType(std::string d){type = d;}
+    std::string getType()const {return type;}
 
 
 };

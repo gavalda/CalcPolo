@@ -3,6 +3,15 @@
 #include "D.h"
 #include "Donnee.h"
 
+
+/// \file Constante.h
+/// \author Clémence BLOT, Benoît GAVALDA
+/// \brief Constante Class abstraite héritant de D (qui hérite de Donnée) et engeandrant les classe Reel, Rationnel, Entier.
+///
+///
+///
+
+
 class Constante : public D
 {
 public:

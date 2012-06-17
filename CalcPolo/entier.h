@@ -8,6 +8,12 @@
  #include <QRegExp>
 
 
+/// \file Entier.h
+/// \author Clémence BLOT, Benoît GAVALDA
+/// \brief Entier contient la classe permet de générer les objets stockant les entiers
+///
+/// \param data La donnée à stocker
+///
 
 class Entier:public Constante
 {

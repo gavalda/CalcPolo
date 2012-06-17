@@ -33,11 +33,11 @@ Donnee* DonneeFactory::getType(QString s)
         {
         return new Complexe(s);
         }
-        else if(CollectionPile::getInstance().at(CollectionPile::getInstance().getActif())->getType()=="Entier" && Donnee::isEntier(s))
+    else if(CollectionPile::getInstance().at(CollectionPile::getInstance().getActif())->getType()=="Entier" && Donnee::isEntier(s))
             return new Entier(s);
-        else if(CollectionPile::getInstance().at(CollectionPile::getInstance().getActif())->getType()=="Reel" && Donnee::isReel(s))
+    else if(CollectionPile::getInstance().at(CollectionPile::getInstance().getActif())->getType()=="Reel" && Donnee::isReel(s))
             return new Reel(s);
-        else if(CollectionPile::getInstance().at(CollectionPile::getInstance().getActif())->getType()=="Rationnel" && (Donnee::isRationnel(s)||Donnee::isEntier(s)))
+    else if(CollectionPile::getInstance().at(CollectionPile::getInstance().getActif())->getType()=="Rationnel" && (Donnee::isRationnel(s)||Donnee::isEntier(s)))
         {
              try
             {
@@ -50,11 +50,10 @@ Donnee* DonneeFactory::getType(QString s)
                   msgBox.exec();
             }
         }
-        if(Donnee::isExpression(s))
+    if(Donnee::isExpression(s))
             return new Expression(s);
-        else
-        {
+    else
             return NULL;
-        }
+
 }
 

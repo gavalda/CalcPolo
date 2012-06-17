@@ -5,6 +5,12 @@
 #include "Donnee.h"
 
 
+/// \file Expression.h
+/// \author Clémence BLOT, Benoît GAVALDA
+/// \brief Expression contient la classe permet de générer les objets stockant les expressions
+///
+/// \param exp Expression à stocker
+///
 class Expression : public Donnee
 {
     QString exp;

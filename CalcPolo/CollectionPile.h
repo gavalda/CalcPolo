@@ -1,12 +1,23 @@
 #ifndef COLLECTIONPILE_H
 #define COLLECTIONPILE_H
 
+///
+/// \file CollectionPile.h
+/// \author Clémence BLOT, Benoît GAVALDA
+/// \brief CollectionPile contient la classe CollectionPile qui herite de vector et contient les piles pour ctrl + Z/ctrl + Y (undo/redo) et les onglets
+///
+///
+///
 
 #include <vector>
 #include "Pile.h"
 #include <QString>
 
-//Design Pattern creation de piles pour le  undo redo et les onglets
+
+
+/// \class CollectionPile CollextionPile.h
+/// \param instance l'instance unique de notre Collection
+/// \param actif rang de la pile active
 
 class CollectionPile :public std::vector<Pile *>  //vector de Pile
 {

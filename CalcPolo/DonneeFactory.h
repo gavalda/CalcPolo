@@ -4,6 +4,12 @@
 #include "Donnee.h"
 #include <QStringList>
 
+/// \file DonneeFactory.h
+/// \author Clémence BLOT, Benoît GAVALDA
+/// \brief DonneFactory Classe à instance unique qui créer les Objets de type Donnee (Reel, Rationnel, Entier, Complexe)
+///
+/// \param instance Instance unique
+///
 class DonneeFactory
 {
     static DonneeFactory * instance;/*!<  Instance unique de la factory*/

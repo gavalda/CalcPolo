@@ -11,6 +11,12 @@
 #include <QMessageBox>
 
 
+/// \file MainWindow.h
+/// \author Clémence BLOT, Benoît GAVALDA
+/// \brief MainWindow Classe de l'affichage de la fenêtre principale.
+///
+///
+///
 
 namespace Ui {
 class MainWindow;

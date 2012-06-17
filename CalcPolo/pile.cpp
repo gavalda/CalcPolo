@@ -4,7 +4,7 @@
 #include "Rationnel.h"
 #include "Complexe.h"
 #include "Expression.h"
-
+#include "string"
 #include "dom.h"
 #include <cmath>
 #include "DonneeException.h"
@@ -39,29 +39,38 @@ Pile::~Pile(){
 
 
 
-Pile& Pile::clone() const{
+Pile& Pile::clone() const
+{
     Pile *p=new Pile();
-    for(int i=0; i<size(); i++){
+    for(int i=0; i<size(); i++)
+    {
         p->push(DonneeFactory::getInstance().getType(at(i)->toQString()));
     }
+
+    p->setType(getType());   //string
     p->setMemento(getMemento());
     p->setDegre(getDegre());
+
     return *p;
 }
 
 
-Pile& Pile::duplique() const{
+Pile& Pile::duplique() const
+{
     Pile *p=new Pile();
-    for(int i=0; i<size(); i++){
+    for(int i=0; i<size(); i++)
+    {
         p->push(DonneeFactory::getInstance().getType(at(i)->toQString()));
     }
     p->setMemento(new Memento);
+    p->setType(getType());        //string
     p->setDegre(getDegre());
     return *p;
 }
 
 
-void Pile::swap(unsigned int x, unsigned int y){
+void Pile::swap(unsigned int x, unsigned int y)
+{
     if (x < (unsigned int)this->size() && y < (unsigned int)this->size()){
         Donnee * tmp = at(size()-1-x);
         replace(size()-1-x, at(size()-1-y));
@@ -69,7 +78,8 @@ void Pile::swap(unsigned int x, unsigned int y){
     }
 }
 
-void Pile::sum(const unsigned int x){
+void Pile::sum(const unsigned int x)
+{
     if(!isEmpty()){
 
         Donnee* sumVect;
@@ -82,7 +92,8 @@ void Pile::sum(const unsigned int x){
     }
 }
 
-void Pile::mean(const unsigned int x){
+void Pile::mean(const unsigned int x)
+{
     if(!isEmpty()){
             Donnee* sumVect;
             for(iterator it=begin(); it!=end(); it++){
@@ -97,7 +108,8 @@ void Pile::mean(const unsigned int x){
 
 void Pile::addition()
 {
-    if(this->size() > 1){
+    if(this->size() > 1)
+    {
         g->addMemoire(this);
         Donnee * resultat;
         Donnee *op1 = pop();
@@ -109,7 +121,8 @@ void Pile::addition()
             push(resultat);
             g->addMemoire(this);
         }
-        catch (std::exception &e) {
+        catch (std::exception &e)
+        {
             QMessageBox msgBox;
             msgBox.setText(e.what());
             msgBox.exec();
@@ -121,7 +134,8 @@ void Pile::addition()
 
 void Pile::soustraction()
 {
-    if(this->size() > 1){
+    if(this->size() > 1)
+    {
         g->addMemoire(this);
         Donnee * resultat;
         Donnee *op1 = pop();
@@ -133,7 +147,8 @@ void Pile::soustraction()
         push(resultat);
         g->addMemoire(this);
         }
-        catch (std::exception &e) {
+        catch (std::exception &e)
+        {
             QMessageBox msgBox;
  msgBox.setText(e.what());
  msgBox.exec();
@@ -146,7 +161,8 @@ void Pile::soustraction()
 
 void Pile::multiplication()
 {
-    if(this->size() > 1){
+    if(this->size() > 1)
+    {
         g->addMemoire(this);
         Donnee * resultat;
         Donnee *op1 = pop();
@@ -158,7 +174,8 @@ void Pile::multiplication()
         push(resultat);
         g->addMemoire(this);
         }
-        catch (std::exception &e) {
+        catch (std::exception &e)
+        {
             QMessageBox msgBox;
  msgBox.setText(e.what());
  msgBox.exec();
@@ -172,19 +189,22 @@ void Pile::multiplication()
 
 void Pile::division()
 {
-    if(this->size() > 1){
+    if(this->size() > 1)
+    {
         g->addMemoire(this);
         Donnee * resultat;
         Donnee *op1 = pop();
         Donnee *op2 = pop();
-        try{
+        try
+        {
         resultat=*op2/(*op1);
         delete op1;
         delete op2;
         push(resultat);
         g->addMemoire(this);
         }
-        catch (std::exception &e) {
+        catch (std::exception &e)
+        {
             QMessageBox msgBox;
  msgBox.setText(e.what());
  msgBox.exec();
@@ -196,19 +216,22 @@ void Pile::division()
 
 void Pile::pow()
 {
-    if(this->size() > 1){
+    if(this->size() > 1)
+    {
         g->addMemoire(this);
         Donnee * resultat;
         Donnee *op1 = pop();
         Donnee *op2 = pop();
-        try{
+        try
+        {
         resultat=op2->pow(*op1);
         delete op1;
         delete op2;
         push(resultat);
         g->addMemoire(this);
         }
-        catch (std::exception &e) {
+        catch (std::exception &e)
+        {
             QMessageBox msgBox;
  msgBox.setText(e.what());
  msgBox.exec();
@@ -220,7 +243,8 @@ void Pile::pow()
 
 void Pile::mod()
 {
-    if(this->size() > 1){
+    if(this->size() > 1)
+    {
         g->addMemoire(this);
         Donnee * resultat;
         Donnee *op1 = pop();
@@ -233,7 +257,8 @@ void Pile::mod()
         push(resultat);
         g->addMemoire(this);
         }
-        catch (std::exception &e) {
+        catch (std::exception &e)
+        {
             QMessageBox msgBox;
  msgBox.setText(e.what());
  msgBox.exec();
@@ -248,8 +273,9 @@ void Pile::parser(QString donnee)
     if(!Expression::isExpression(donnee))
     {
         Donnee* test=0;
-        QRegExp rx("\\donnee+");
-        QStringList t=(donnee.split(rx));
+       /* QRegExp rx("\\donnee+");
+        QStringList t=(donnee.split(rx));*/
+        QStringList t=(donnee.split(" "));
         for(int i=0; i<t.size();i++)
         {
             if (t[i]=="+")

@@ -7,6 +7,13 @@
 #include "DonneeException.h"
 #include <QMessageBox>
 
+/// \file Donnee.h
+/// \author Clémence BLOT, Benoît GAVALDA
+/// \brief Donne contient la classe abstraite qui chapeaute les classes des différents types de données.
+///
+///
+///
+
 
 const float M_PI = 3.14159;
 

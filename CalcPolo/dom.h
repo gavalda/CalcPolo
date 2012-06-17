@@ -10,6 +10,13 @@
 #include "pile.h"
 
 
+/// \file Dom.h
+/// \author Clémence BLOT, Benoît GAVALDA
+/// \brief Dom classe contenant les méthodes d'écriture et de lecture de piles.
+///
+///
+///
+
 class Dom
 {
 public:

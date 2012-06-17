@@ -10,6 +10,14 @@
 
 #include "D.h"
 
+/// \file Complexe.h
+/// \author Clémence BLOT, Benoît GAVALDA
+/// \brief Complexe contient la classe complexe qui hérite de D, elle même héritant de Donnee.
+/// cette classe sert à créer les objets complexes a&b (lorsque le mode complexe est activé)
+/// \param re partie réelle
+/// \param im partie imaginaire
+
+
 class Complexe:public D
 {
     Constante*  re;

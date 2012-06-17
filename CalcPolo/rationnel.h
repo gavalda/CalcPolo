@@ -11,6 +11,12 @@
 #include <QRegExp>
 
 
+/// \file Rationnel.h
+/// \author Clémence BLOT, Benoît GAVALDA
+/// \brief Rationnel contient la classe permet de générer les objets stockant les rationnels
+///
+/// \param num numérateur
+///  \param denum dénominateur
 
 class Rationnel:public Constante
 {

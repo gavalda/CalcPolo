@@ -9,6 +9,14 @@
 #include <QRegExp>
 
 
+/// \file Reel.h
+/// \author Clémence BLOT, Benoît GAVALDA
+/// \brief Reel contient la classe permet de générer les objets stockant les réels
+///
+/// \param data réel à stocker
+///
+
+
 class Reel:public Constante
 {
     double data;

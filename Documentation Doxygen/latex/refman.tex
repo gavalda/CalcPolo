@@ -1,0 +1,106 @@
+\documentclass{book}
+\usepackage[a4paper,top=2.5cm,bottom=2.5cm,left=2.5cm,right=2.5cm]{geometry}
+\usepackage{makeidx}
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{ifthen}
+\usepackage[table]{xcolor}
+\usepackage{textcomp}
+\usepackage{alltt}
+\usepackage{ifpdf}
+\ifpdf
+\usepackage[pdftex,
+            pagebackref=true,
+            colorlinks=true,
+            linkcolor=blue,
+            unicode
+           ]{hyperref}
+\else
+\usepackage[ps2pdf,
+            pagebackref=true,
+            colorlinks=true,
+            linkcolor=blue,
+            unicode
+           ]{hyperref}
+\usepackage{pspicture}
+\fi
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+
+\usepackage{mathptmx}
+\usepackage[scaled=.90]{helvet}
+\usepackage{courier}
+\usepackage{sectsty}
+\usepackage[titles]{tocloft}
+\usepackage{doxygen}
+\lstset{language=C++,inputencoding=utf8,basicstyle=\footnotesize,breaklines=true,breakatwhitespace=true,tabsize=8,numbers=left }
+\makeindex
+\setcounter{tocdepth}{3}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\familydefault}{\sfdefault}
+\hfuzz=15pt
+\setlength{\emergencystretch}{15pt}
+\hbadness=750
+\tolerance=750
+\begin{document}
+\hypersetup{pageanchor=false,citecolor=blue}
+\begin{titlepage}
+\vspace*{7cm}
+\begin{center}
+{\Large Calc\-Polo }\\
+\vspace*{1cm}
+{\large Généré par Doxygen 1.8.1}\\
+\vspace*{0.5cm}
+{\small Dimanche Juin 17 2012 17:26:14}\\
+\end{center}
+\end{titlepage}
+\clearemptydoublepage
+\pagenumbering{roman}
+\tableofcontents
+\clearemptydoublepage
+\pagenumbering{arabic}
+\hypersetup{pageanchor=true,citecolor=blue}
+\chapter{Index des classes}
+\input{hierarchy}
+\chapter{Index des classes}
+\input{annotated}
+\chapter{Index des fichiers}
+\input{files}
+\chapter{Documentation des classes}
+\input{class_collection_pile}
+\input{class_complexe}
+\input{class_constante}
+\input{class_d}
+\input{class_dom}
+\input{class_donnee}
+\input{class_donnee_exception}
+\input{class_donnee_factory}
+\input{class_entier}
+\input{class_expression}
+\input{class_main_window}
+\input{class_memento}
+\input{class_pile}
+\input{class_rationnel}
+\input{class_reel}
+\chapter{Documentation des fichiers}
+\input{_collection_pile_8h}
+\input{_complexe_8h}
+\input{_constante_8h}
+\input{_d_8h}
+\input{_dom_8h}
+\input{_donnee_8h}
+\input{_donnee_exception_8h}
+\input{_donnee_factory_8h}
+\input{_entier_8h}
+\input{_expression_8h}
+\input{_main_window_8h}
+\input{_memento_8h}
+\input{_pile_8h}
+\input{_rationnel_8h}
+\input{_reel_8h}
+\printindex
+\end{document}

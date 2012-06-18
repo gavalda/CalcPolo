@@ -78,33 +78,46 @@ void Pile::swap(unsigned int x, unsigned int y)
     }
 }
 
-void Pile::sum(const unsigned int x)
+void Pile::sum()
 {
-    if(!isEmpty()){
+    if (!isEmpty())
+    {
+            Donnee* sum=pop();
+         while(!isEmpty())
+         {
 
-        Donnee* sumVect;
+             sum=(*sum+*pop());
 
-        for(iterator it=begin(); it!=end(); it++){
-            sumVect=*sumVect+*(*it);
-        }
-
-        push(sumVect);
+         }
+          push(sum);
     }
 }
 
-void Pile::mean(const unsigned int x)
+void Pile::mean()
 {
-    if(!isEmpty()){
-            Donnee* sumVect;
-            for(iterator it=begin(); it!=end(); it++){
-                sumVect=*sumVect+*(*it);
-            }
-            Entier taille(size());
-            sumVect=*sumVect/taille;
-            push(sumVect);
+
+    if (!isEmpty())
+    {
+
+         if (!(getType()=="Complexe"))
+           {
+              Donnee* mean=pop();
+              int i=1;
+                 while(!isEmpty())
+             {
+                 i++;
+                 mean=(*mean+*pop());
+
+                }
+
+               mean=*mean/Reel(i);
+                push(mean);
+           }
     }
 
 }
+
+
 
 void Pile::addition()
 {

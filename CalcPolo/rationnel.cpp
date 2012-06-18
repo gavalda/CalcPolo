@@ -45,14 +45,7 @@ Donnee* Rationnel::operator +(Donnee & t){
     }
     catch(std::exception &e){}
 
-/*    try{
-       Expression &tmp=dynamic_cast<Expression&>(t);
-       QString e;
-       e = "'" + toQString() + " "+ tmp.toQString().remove("'") + " +'";
-       return new Expression(e);
-    }
-    catch(std::exception &e){}
-*/
+
 
 
     throw DonneeException("erreur Rationnel op+");
@@ -90,14 +83,7 @@ Donnee* Rationnel::operator -(Donnee & t){
     }
     catch(std::exception &e){}
 
-/*    try{
-       Expression &tmp=dynamic_cast<Expression&>(t);
-       QString e;
-       e = "'" + toQString() + " "+ tmp.toQString().remove("'") + " -'";
-       return new Expression(e);
-    }
-    catch(std::exception &e){}
-*/
+
 
     throw DonneeException("erreur Rationnel op-");
 }
@@ -137,14 +123,7 @@ Donnee* Rationnel::operator /(Donnee & t){
     }
     catch(std::exception &e){}
 
-/*    try{
-       Expression &tmp=dynamic_cast<Expression&>(t);
-       QString e;
-       e = "'" + toQString() + " "+ tmp.toQString().remove("'") + " /'";
-       return new Expression(e);
-    }
-    catch(std::exception &e){}
-*/
+
 
     throw DonneeException("erreur Rationnel op/");
 }
@@ -187,15 +166,7 @@ Donnee* Rationnel::operator*(Donnee& t)
     }
     catch(std::exception &e){}
 
-/*    try{
-       Expression &tmp=dynamic_cast<Expression&>(t);
-       QString e;
-       e = "'" + toQString() +" "+ tmp.toQString().remove("'") + " *'";
-       return new Expression(e);
-    }
-    catch(std::exception &e){}
 
-*/
     throw DonneeException("erreur Rationnel op*");
 }
 
@@ -207,15 +178,7 @@ Donnee* Rationnel::pow(Donnee & t){
        return resultat;
     }
     catch(std::exception &e){}
-/*
-    try{
 
-       Reel &tmp=dynamic_cast<Reel&>(t);
-       Rationnel *resultat=new Rationnel(std::pow(num,tmp.getData()), std::pow(denum, tmp.getData()));
-       return resultat;
-    }
-    catch(std::exception &e){}
-*/
     throw DonneeException("erreur Rationnel pow");
 }
 
@@ -342,10 +305,9 @@ Donnee* Rationnel::log(){
 }
 
 Donnee* Rationnel::inv(){
-    double tmp(num/denum);
-    tmp=1/tmp;
-    Donnee* t= new Reel(tmp);
-    return t;
+    Rationnel un(1, 1);
+
+    return (un/ *this);
 }
 
 Donnee* Rationnel::sqrt(){
@@ -356,15 +318,9 @@ Donnee* Rationnel::sqrt(){
 }
 
 Donnee* Rationnel::sqr(){
-    double tmp(num/denum);
-    tmp=std::pow (tmp,2);
-    Donnee* t= new Reel(tmp);
-    return t;
+    return (*this**this);
 }
 
 Donnee* Rationnel::cube(){
-    double tmp(num/denum);
-    tmp=std::pow (tmp,3);
-    Donnee* t= new Reel(tmp);
-    return t;
+    return (*this->sqr()**this);
 }

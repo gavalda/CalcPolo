@@ -43,17 +43,7 @@ Donnee* Entier::operator +(Donnee & t)
     }
     catch(std::exception &e){}
 
- /*   try
-    {
-
-       Expression &tmp=dynamic_cast<Expression&>(t);
-       QString e;
-       e = "'" + toQString() + " "+ tmp.toQString().remove("'") + " +'";
-       return new Expression(e);
-    }
-    catch(std::exception &e){}
-
- */   try
+   try
     {
        Complexe &tmp=dynamic_cast<Complexe&>(t);
 
@@ -117,16 +107,6 @@ Donnee* Entier::operator /(Donnee & t)
     }
     catch(std::exception &e){}
 
-/*    try
-    {
-
-       Expression &tmp=dynamic_cast<Expression&>(t);
-       QString e;
-       e = "'" + toQString() + " "+ tmp.toQString().remove("'") + " /'";
-       return new Expression(e);
-    }
-    catch(std::exception &e){}
-*/
     try
     {
        Complexe &tmp=dynamic_cast<Complexe&>(t);
@@ -166,16 +146,7 @@ Donnee* Entier::operator*(Donnee& t)
     }
     catch(std::exception &e){}
 
-/*    try
-    {
 
-       Expression &tmp=dynamic_cast<Expression&>(t);
-       QString e;
-       e = "'" + toQString() +" "+ tmp.toQString().remove("'") + " *'";
-       return new Expression(e);
-    }
-    catch(std::exception &e){}
-*/
     try
     {
         Complexe &tmp=dynamic_cast<Complexe&>(t);
@@ -224,15 +195,7 @@ Donnee* Entier::operator-(Donnee& t)
     }
     catch(std::exception &e){}
 
-/*    try{
 
-       Expression &tmp=dynamic_cast<Expression&>(t);
-       QString e;
-       e = "'" + toQString() + " "+ tmp.toQString().remove("'") + " -'";
-       return new Expression(e);
-    }
-    catch(std::exception &e){}
-*/
     try
     {
        Complexe &tmp=dynamic_cast<Complexe&>(t);
@@ -265,15 +228,7 @@ Donnee* Entier::pow(Donnee & t){
        return resultat;
     }
     catch(std::exception &e){}
-/*
-    try{
 
-       Reel &tmp=dynamic_cast<Reel&>(t);
-       Entier *resultat=new Entier(std::pow(data,tmp.getData()));
-       return resultat;
-    }
-    catch(std::exception &e){}
-    */
     throw DonneeException("erreur Entier");
 }
 
@@ -394,18 +349,15 @@ Donnee* Entier::sqrt(){
     return t;
 }
 
-Donnee* Entier::sqr(){
-    double tmp(data);
-    tmp=std::pow(tmp,2);
-    Donnee* t= new Reel(tmp);
-    return t;
+Donnee* Entier::sqr()
+{
+        return (*this**this);
 }
 
-Donnee* Entier::cube(){
-    double tmp(data);
-    tmp=std::pow(tmp,3);
-    Donnee* t= new Reel(tmp);
-    return t;
+Donnee* Entier::cube()
+{
+
+    return (*this->sqr()**this);
 }
 
 Donnee* Entier::fact(){

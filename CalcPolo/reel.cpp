@@ -37,15 +37,6 @@ Donnee* Reel::operator +(Donnee & t){
     }
     catch(std::exception &e){}
 
-/*   try{
-
-       Expression &tmp=dynamic_cast<Expression&>(t);
-       QString e;
-       e = "'" + toQString() + " "+ tmp.toQString().remove("'") + " +'";
-       return new Expression(e);
-    }
-    catch(std::exception &e){}
-*/
     try
     {
        Complexe &tmp=dynamic_cast<Complexe&>(t);
@@ -74,18 +65,17 @@ Donnee* Reel::operator +(Donnee & t){
 
 Donnee* Reel::operator /(Donnee & t)
 {
-    try{
-      /* Reel &tmp=dynamic_cast<Reel&>(t);
-       Rationnel r(data*10*getDecimales(),10*getDecimales());
-       Rationnel r1(tmp.getData()*10*tmp.getDecimales(),10*tmp.getDecimales());
-       return r/r1;*/
+    try
+    {
+
        Reel &tmp=dynamic_cast<Reel&>(t);
        Reel *resultat=new Reel(data/tmp.getData());
        return resultat;
     }
     catch(std::exception &e){}
 
-    try{
+    try
+    {
        Entier &tmp=dynamic_cast<Entier&>(t);
        Rationnel r(data*10*getDecimales(),10*getDecimales());
        Rationnel r1(tmp.getData(),1);
@@ -93,7 +83,8 @@ Donnee* Reel::operator /(Donnee & t)
     }
     catch(std::exception &e){}
 
-    try{
+    try
+    {
 
        Rationnel &tmp=dynamic_cast<Rationnel&>(t);
        Donnee* resultat;
@@ -103,15 +94,7 @@ Donnee* Reel::operator /(Donnee & t)
     }
     catch(std::exception &e){}
 
-/*    try{
 
-       Expression &tmp=dynamic_cast<Expression&>(t);
-       QString e;
-       e = "'" + toQString() + " "+ tmp.toQString().remove("'") + " /'";
-       return new Expression(e);
-    }
-    catch(std::exception &e){}
-*/
     try
     {
         Complexe &tmp=dynamic_cast<Complexe&>(t);
@@ -177,16 +160,7 @@ Donnee* Reel::operator*(Donnee& t)
         return result;
     }
     catch(std::exception &e){}
-/*
-    try{
 
-       Expression &tmp=dynamic_cast<Expression&>(t);
-       QString e;
-       e = "'" + toQString() +" "+ tmp.toQString().remove("'") + " *'";
-       return new Expression(e);
-    }
-    catch(std::exception &e){}
-*/
     throw DonneeException("erreur Reel op*");
 }
 
@@ -241,29 +215,14 @@ Donnee* Reel::operator-(Donnee& t)
     }
     catch(std::exception &e){}
 
-/*   try
-{
 
-       Expression &tmp=dynamic_cast<Expression&>(t);
-       QString e;
-       e = "'" + toQString() + " "+ tmp.toQString().remove("'") + " -'";
-       return new Expression(e);
-    }
-    catch(std::exception &e){}
-*/
     throw DonneeException("erreur Reel op-");
 }
 
 
-Donnee* Reel::pow(Donnee & t){
-/*    try{
+Donnee* Reel::pow(Donnee & t)
+{
 
-       Entier &tmp=dynamic_cast<Entier&>(t);
-       Reel *resultat=new Reel(std::pow(data,tmp.getData()));
-       return resultat;
-    }
-    catch(std::exception &e){}
-*/
     try{
 
        Reel &tmp=dynamic_cast<Reel&>(t);
@@ -275,7 +234,8 @@ Donnee* Reel::pow(Donnee & t){
     throw DonneeException("erreur Reel pow");
 }
 
-QString Reel::toQString(){
+QString Reel::toQString()
+{
     QString resultat;
     QTextStream ss(&resultat);
     ss << data;
@@ -288,7 +248,8 @@ Donnee* Reel::sign(){
     return t;
 }
 
-Donnee* Reel::sinus(bool degre){
+Donnee* Reel::sinus(bool degre)
+{
     double tmp(data);
     if(degre)
         tmp=sin(tmp*M_PI /180);
@@ -298,7 +259,8 @@ Donnee* Reel::sinus(bool degre){
     return t;
 }
 
-Donnee* Reel::cosinus(bool degre){
+Donnee* Reel::cosinus(bool degre)
+{
     double tmp(data);
     if(degre)
         tmp=cos(tmp*M_PI /180);
@@ -308,7 +270,8 @@ Donnee* Reel::cosinus(bool degre){
     return t;
 }
 
-Donnee* Reel::tangente(bool degre){
+Donnee* Reel::tangente(bool degre)
+{
     double tmp(data);
     if(degre)
         tmp=tan(tmp*M_PI /180);
@@ -318,7 +281,8 @@ Donnee* Reel::tangente(bool degre){
     return t;
 }
 
-Donnee* Reel::sinush(bool degre){
+Donnee* Reel::sinush(bool degre)
+{
     double tmp(data);
     if(degre)
         tmp=sinh(tmp*M_PI /180);
@@ -328,7 +292,8 @@ Donnee* Reel::sinush(bool degre){
     return t;
 }
 
-Donnee* Reel::cosinush(bool degre){
+Donnee* Reel::cosinush(bool degre)
+{
     double tmp(data);
     if(degre)
         tmp=cosh(tmp*M_PI /180);
@@ -338,7 +303,8 @@ Donnee* Reel::cosinush(bool degre){
     return t;
 }
 
-Donnee* Reel::tangenteh(bool degre){
+Donnee* Reel::tangenteh(bool degre)
+{
     double tmp(data);
     if(degre)
         tmp=tanh(tmp*M_PI /180);
@@ -349,44 +315,45 @@ Donnee* Reel::tangenteh(bool degre){
 }
 
 
-Donnee* Reel::ln(){
+Donnee* Reel::ln()
+{
     double tmp(data);
     tmp=std::log(tmp);
     Donnee* t= new Reel(tmp);
     return t;
 }
 
-Donnee* Reel::log(){
+Donnee* Reel::log()
+{
     double tmp(data);
     tmp=log10(tmp);
     Donnee* t= new Reel(tmp);
     return t;
 }
 
-Donnee* Reel::inv(){
+Donnee* Reel::inv()
+{
     double tmp(data);
     tmp=1/tmp;
     Donnee* t= new Reel(tmp);
     return t;
 }
 
-Donnee* Reel::sqrt(){
+Donnee* Reel::sqrt()
+{
     double tmp(data);
     tmp=std::sqrt(tmp);
     Donnee* t= new Reel(tmp);
     return t;
 }
 
-Donnee* Reel::sqr(){
-    double tmp(data);
-    tmp=std::pow(tmp,2);
-    Donnee* t= new Reel(tmp);
-    return t;
+Donnee* Reel::sqr()
+{
+    return (*this**this);
 }
 
-Donnee* Reel::cube(){
-    double tmp(data);
-    tmp=std::pow(tmp,3);
-    Donnee* t= new Reel(tmp);
-    return t;
+Donnee* Reel::cube()
+{
+    return(*this->sqr()**this);
+
 }

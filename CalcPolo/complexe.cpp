@@ -8,12 +8,12 @@
 
 
 
-Donnee* Complexe::operator +(Donnee & t){
+Donnee* Complexe::operator +(Donnee & t)
+{
     try
     {
         Complexe &tmp=dynamic_cast<Complexe&>(t);
-       /* if ((*im + *tmp.im)->toQString()=="0")
-            return *re + *tmp.re;*/
+
        Complexe *resultat=new Complexe;
        resultat->re= dynamic_cast<Constante*> (*re + *tmp.re);
        resultat->im= dynamic_cast<Constante*>(*im + *tmp.im);
@@ -44,15 +44,9 @@ Donnee* Complexe::operator +(Donnee & t){
     }
     catch(std::exception &e){}
 
- /*   try{
-        Expression &tmp=dynamic_cast<Expression&>(t);
-        QString e;
-        e = "'" + toQString() + " "+ tmp.toQString().remove("'") + " +'";
-        return new Expression(e);
-    }
-    catch(std::exception &e){}
-*/
-    try{
+
+    try
+    {
        Rationnel &tmp=dynamic_cast<Rationnel&>(t);
        Complexe conv(tmp.toQString());
        Donnee * resultat;
@@ -69,7 +63,8 @@ Donnee* Complexe::operator +(Donnee & t){
 Donnee* Complexe::operator /(Donnee & t)
 {
     try{
-       Complexe &tmp=dynamic_cast<Complexe&>(t);
+
+        Complexe &tmp=dynamic_cast<Complexe&>(t);
 
 
         Reel &im1=dynamic_cast<Reel&>(*this->getIm());
@@ -80,57 +75,25 @@ Donnee* Complexe::operator /(Donnee & t)
         Reel &re2sqr=dynamic_cast<Reel&>(*re2.sqr());
 
 
+        Reel* re_f = new Reel(((re1.getData()*re2.getData())-(im1.getData()*im2.getData()))/(re2sqr.getData()+im2sqr.getData()));
+        Reel* im_f = new Reel(((im1.getData()*re2.getData())-(re1.getData()*im2.getData()))/(re2sqr.getData()+(im2sqr.getData())));
 
 
 
-
-
-         Reel* re_f = new Reel(((re1.getData()*re2.getData())-(im1.getData()*im2.getData()))/(re2sqr.getData()+im2sqr.getData()));
-         Reel* im_f = new Reel(((im1.getData()*re2.getData())-(re1.getData()*im2.getData()))/(re2sqr.getData()+(im2sqr.getData())));
-
-
-
-
-
-
-
-     /*  double re;
-       double im;
-       Complexe *resultat(re,im);
-      // resultat= *(*this * *(tmp.conjugue())) / *(tmp * *(tmp.conjugue())) ;
-*/
-
-       Complexe* result = new Complexe(re_f, im_f);
-       return result;
+        Complexe* result = new Complexe(re_f, im_f);
+        return result;
 
        }
     catch(std::exception &e){}
 
-  /*     Constante *tmp=dynamic_cast<Constante*>(&t);
-       if (tmp)
-       {
-       Complexe *resultat=new Complexe;
-       resultat->re= dynamic_cast<Constante*> (*re / *tmp);
-       resultat->im= dynamic_cast<Constante*>(*im / *tmp);
-       return resultat;
-       }
 
-
-
-      try{
-           Expression &tmp=dynamic_cast<Expression&>(t);
-           QString e;
-           e = "'" + toQString() + " "+ tmp.toQString().remove("'") + " /'";
-           return new Expression(e);
-    }
-    catch(std::exception &e){}
-*/
 
     throw DonneeException("erreur Complexe op/");
 }
 
 Donnee * Complexe::operator*(Donnee& t){
-    try{
+    try
+    {
        Complexe &tmp=dynamic_cast<Complexe&>(t);
        if ((*(*re * *tmp.im)+*(*im * *tmp.re))->toQString()=="0")
            return DonneeFactory::getInstance().getType((*(*re * *tmp.re)-*(*im * *tmp.im))->toQString());
@@ -141,7 +104,8 @@ Donnee * Complexe::operator*(Donnee& t){
     }
     catch(std::exception &e){}
 
-    try{
+    try
+    {
        Entier &tmp=dynamic_cast<Entier&>(t);
        Complexe conv(tmp.toQString());
        Donnee * resultat;
@@ -150,7 +114,8 @@ Donnee * Complexe::operator*(Donnee& t){
     }
     catch(std::exception &e){}
 
-    try{
+    try
+    {
        Reel &tmp=dynamic_cast<Reel&>(t);
        Complexe conv(tmp.toQString());
        Donnee * resultat;
@@ -159,15 +124,7 @@ Donnee * Complexe::operator*(Donnee& t){
     }
     catch(std::exception &e){}
 
- /*   try{
-        Expression &tmp=dynamic_cast<Expression&>(t);
-        QString e;
-        e = "'" + toQString() + " "+ tmp.toQString().remove("'") + " *'";
-        return new Expression(e);
-    }
-    catch(std::exception &e){}
-
- */  try{
+  try{
        Rationnel &tmp=dynamic_cast<Rationnel&>(t);
        Complexe conv(tmp.toQString());
        Donnee * resultat;
@@ -180,7 +137,8 @@ Donnee * Complexe::operator*(Donnee& t){
 }
 
 Donnee* Complexe::operator-(Donnee& t){
-    try{
+    try
+    {
        Complexe &tmp=dynamic_cast<Complexe&>(t);
        Complexe *resultat=new Complexe;
        resultat->re= dynamic_cast<Constante*> (*re - *tmp.re);
@@ -199,7 +157,8 @@ Donnee* Complexe::operator-(Donnee& t){
     }
     catch(std::exception &e){}
 
-    try{
+    try
+    {
        Reel &tmp=dynamic_cast<Reel&>(t);
        Complexe conv(tmp.toQString());
        Donnee * resultat;
@@ -208,15 +167,7 @@ Donnee* Complexe::operator-(Donnee& t){
     }
     catch(std::exception &e){}
 
-   /* try{
-        Expression &tmp=dynamic_cast<Expression&>(t);
-        QString e;
-        e = "'" + toQString() + " "+ tmp.toQString().remove("'") + " -'";
-        return new Expression(e);
-    }
-    catch(std::exception &e){}
-
-   */ try{
+   try{
        Rationnel &tmp=dynamic_cast<Rationnel&>(t);
        Complexe conv(tmp.toQString());
        Donnee * resultat;
@@ -249,4 +200,22 @@ Donnee* Complexe::conjugue(){
     resultat_im=dynamic_cast<Constante*>(im->sign());
     QString resultat =Complexe(re,resultat_im).toQString();
     return new Complexe(resultat);
+}
+
+Donnee* Complexe::sqr()
+{
+    return(*this**this);
+}
+
+Donnee* Complexe::cube()
+{
+    return(*this->sqr()**this);
+}
+
+Donnee* Complexe::inv()
+{
+    Reel re(1);
+    Reel im(0);
+    Complexe un(&re,&im);
+    return(un/ *this);
 }

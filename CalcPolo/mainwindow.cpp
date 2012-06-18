@@ -61,23 +61,19 @@ MainWindow::MainWindow(Pile &pile, QWidget *parent) :
 
 
     CollectionPile::getInstance().addPile(&pile);
-    setFixedSize(660,550);
+    setFixedSize(660,470);
     emit refresh_signal();
     ui->degUnit->setChecked(true);
     CollectionPile::getInstance().at(CollectionPile::getInstance().getActif())->setType("Reel");
 
 }
-/*   plus utile car declaration de l'instance unique qui detruit l'objet
-MainWindow::~MainWindow()
-{
-    delete ui;
-}*/
+
 
 
 void MainWindow::hide_show_offon()
 {
     if (height()==256)
-        setFixedHeight(512);
+        setFixedHeight(470);
     else setFixedHeight(256);
 
 }
@@ -148,12 +144,12 @@ void MainWindow::on_swap_clicked(){
 }
 
 void MainWindow::on_sum_clicked(){
-    CollectionPile::getInstance().at(CollectionPile::getInstance().getActif())->sum(10);
+    CollectionPile::getInstance().at(CollectionPile::getInstance().getActif())->sum();
     emit refresh_signal();
 }
 
 void MainWindow::on_mean_clicked(){
-    CollectionPile::getInstance().at(CollectionPile::getInstance().getActif())->mean(10);
+    CollectionPile::getInstance().at(CollectionPile::getInstance().getActif())->mean();
     emit refresh_signal();
 }
 

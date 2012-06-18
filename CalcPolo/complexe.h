@@ -46,8 +46,11 @@ public:
 
     Donnee* operator-(Donnee& t);
 
+    Donnee* sqr();
 
+    Donnee* cube();
 
+    Donnee* inv();
 
     Donnee* sign();
 

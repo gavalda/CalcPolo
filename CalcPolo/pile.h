@@ -41,10 +41,14 @@ public:
     void setNbElt(int nb){nbElt=nb;}
     Memento* getMemento()const{return g;}
     void swap(unsigned int x,unsigned int y);
-    void sum(const unsigned int x);
-    void mean(const unsigned int x);
+    void sum();
+    void mean();
 
-    void dup(){if(!isEmpty()){push(top());}}
+    void dup()
+    {
+        if(!isEmpty())
+        {push(top());}
+    }
     void drop(){if(!isEmpty()){pop();}}
     void addition();
     void soustraction();

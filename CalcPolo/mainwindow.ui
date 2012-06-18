@@ -46,7 +46,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>200</y>
+      <y>210</y>
       <width>241</width>
       <height>201</height>
      </rect>
@@ -182,26 +182,6 @@
        </property>
       </widget>
      </item>
-     <item row="5" column="2">
-      <widget class="QPushButton" name="quote">
-       <property name="text">
-        <string>'</string>
-       </property>
-       <property name="shortcut">
-        <string>Q</string>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="0">
-      <widget class="QPushButton" name="backspace">
-       <property name="text">
-        <string>Backspace</string>
-       </property>
-       <property name="shortcut">
-        <string>Backspace</string>
-       </property>
-      </widget>
-     </item>
      <item row="4" column="1">
       <widget class="QPushButton" name="espace">
        <property name="text">
@@ -270,10 +250,10 @@
    <widget class="QWidget" name="gridLayoutWidget_7">
     <property name="geometry">
      <rect>
-      <x>350</x>
-      <y>200</y>
-      <width>239</width>
-      <height>151</height>
+      <x>408</x>
+      <y>210</y>
+      <width>221</width>
+      <height>201</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout_7">
@@ -422,14 +402,42 @@
    <widget class="QWidget" name="gridLayoutWidget_5">
     <property name="geometry">
      <rect>
-      <x>260</x>
-      <y>200</y>
-      <width>77</width>
-      <height>199</height>
+      <x>270</x>
+      <y>290</y>
+      <width>121</width>
+      <height>121</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout_5">
-     <item row="2" column="0">
+     <item row="4" column="1">
+      <widget class="QPushButton" name="pow">
+       <property name="text">
+        <string>Pow</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="1">
+      <widget class="QPushButton" name="mod">
+       <property name="text">
+        <string>Mod</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QPushButton" name="sign">
+       <property name="text">
+        <string>Sign</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="0">
+      <widget class="QPushButton" name="division">
+       <property name="text">
+        <string>/</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0">
       <widget class="QPushButton" name="multiplication">
        <property name="text">
         <string>*</string>
@@ -437,37 +445,9 @@
       </widget>
      </item>
      <item row="4" column="0">
-      <widget class="QPushButton" name="pow">
-       <property name="text">
-        <string>Pow</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
       <widget class="QPushButton" name="soustraction">
        <property name="text">
         <string>-</string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="0">
-      <widget class="QPushButton" name="division">
-       <property name="text">
-        <string>/</string>
-       </property>
-      </widget>
-     </item>
-     <item row="6" column="0">
-      <widget class="QPushButton" name="mod">
-       <property name="text">
-        <string>Mod</string>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="0">
-      <widget class="QPushButton" name="sign">
-       <property name="text">
-        <string>Sign</string>
        </property>
       </widget>
      </item>
@@ -478,15 +458,25 @@
        </property>
       </widget>
      </item>
+     <item row="0" column="1">
+      <widget class="QPushButton" name="quote">
+       <property name="text">
+        <string>'</string>
+       </property>
+       <property name="shortcut">
+        <string>Q</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </widget>
    <widget class="QWidget" name="verticalLayoutWidget_3">
     <property name="geometry">
      <rect>
       <x>380</x>
-      <y>120</y>
+      <y>110</y>
       <width>81</width>
-      <height>44</height>
+      <height>51</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -509,10 +499,10 @@
    <widget class="QPushButton" name="return_Button">
     <property name="geometry">
      <rect>
-      <x>350</x>
-      <y>360</y>
-      <width>241</width>
-      <height>41</height>
+      <x>270</x>
+      <y>220</y>
+      <width>121</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="text">
@@ -526,7 +516,7 @@
     <property name="geometry">
      <rect>
       <x>260</x>
-      <y>80</y>
+      <y>70</y>
       <width>111</width>
       <height>88</height>
      </rect>
@@ -568,8 +558,8 @@
    <widget class="QRadioButton" name="show_hide">
     <property name="geometry">
      <rect>
-      <x>260</x>
-      <y>50</y>
+      <x>380</x>
+      <y>70</y>
       <width>82</width>
       <height>18</height>
      </rect>
@@ -581,9 +571,9 @@
    <widget class="QWidget" name="gridLayoutWidget_3">
     <property name="geometry">
      <rect>
-      <x>480</x>
+      <x>479</x>
       <y>50</y>
-      <width>160</width>
+      <width>161</width>
       <height>80</height>
      </rect>
     </property>
@@ -620,6 +610,22 @@
       </widget>
      </item>
     </layout>
+   </widget>
+   <widget class="QPushButton" name="backspace">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>170</y>
+      <width>76</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Backspace</string>
+    </property>
+    <property name="shortcut">
+     <string>Backspace</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
